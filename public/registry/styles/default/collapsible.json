@@ -1,0 +1,45 @@
+{
+  "name": "collapsible",
+  "type": "registry:ui",
+  "dependencies": [
+    "@radix-ui/react-collapsible"
+  ],
+  "files": [
+    {
+      "path": "ui/collapsible.tsx",
+      "content": "'use client'\n\nimport * as CollapsiblePrimitive from '@radix-ui/react-collapsible'\n\nconst Collapsible = CollapsiblePrimitive.Root\n\nconst CollapsibleTrigger = CollapsiblePrimitive.CollapsibleTrigger\n\nconst CollapsibleContent = CollapsiblePrimitive.CollapsibleContent\n\nexport { Collapsible, CollapsibleTrigger, CollapsibleContent }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "tailwind": {
+    "config": {
+      "theme": {
+        "extend": {
+          "keyframes": {
+            "collapsible-down": {
+              "from": {
+                "height": "0"
+              },
+              "to": {
+                "height": "var(--radix-collapsible-content-height)"
+              }
+            },
+            "collapsible-up": {
+              "from": {
+                "height": "var(--radix-collapsible-content-height)"
+              },
+              "to": {
+                "height": "0"
+              }
+            }
+          },
+          "animation": {
+            "collapsible-down": "collapsible-down 0.2s ease-out",
+            "collapsible-up": "collapsible-up 0.2s ease-out"
+          }
+        }
+      }
+    }
+  }
+}
