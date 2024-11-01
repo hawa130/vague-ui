@@ -1,26 +1,35 @@
 import { ComponentProps, useMemo } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/registry/default/ui/form'
 import { cn } from '@/lib/utils'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/registry/default/ui/select'
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/registry/default/ui/form'
 import { Input } from '@/registry/default/ui/input'
-import { Switch } from '@/registry/default/ui/switch'
 import { Segmented, SegmentedItem } from '@/registry/default/ui/segmented'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/registry/default/ui/select'
+import { Switch } from '@/registry/default/ui/switch'
 
 export type ComponentConfigFormItemBase = {
   displayName?: string
   description?: string
 }
 
-export type ComponentConfigFormItem<T extends Record<string, any>> = ComponentConfigFormItemBase & {
-  [P in keyof T]:
-  | { name: P & string; type: 'select'; options: (T[P] & string)[]; defaultValue?: T[P] & string }
-  | { name: P & string; type: 'input'; placeholder?: string; defaultValue?: T[P] & string }
-  | { name: P & string; type: 'switch'; defaultValue?: T[P] & boolean }
-  | { name: P & string; type: 'number'; defaultValue?: T[P] & number }
-  | { name: P & string; type: 'radio'; options: (T[P] & string)[]; defaultValue?: T[P] & string }
-}[keyof T]
+export type ComponentConfigFormItem<T extends Record<string, any>> = ComponentConfigFormItemBase &
+  {
+    [P in keyof T]:
+      | { name: P & string; type: 'select'; options: (T[P] & string)[]; defaultValue?: T[P] & string }
+      | { name: P & string; type: 'input'; placeholder?: string; defaultValue?: T[P] & string }
+      | { name: P & string; type: 'switch'; defaultValue?: T[P] & boolean }
+      | { name: P & string; type: 'number'; defaultValue?: T[P] & number }
+      | { name: P & string; type: 'radio'; options: (T[P] & string)[]; defaultValue?: T[P] & string }
+  }[keyof T]
 
 interface ComponentConfigFormField extends ComponentConfigFormItemBase, Omit<ComponentProps<typeof FormField>, 'name'> {
   name: string
@@ -54,10 +63,7 @@ export const ComponentConfigForm = <T extends Record<string, any>>({
   onChange,
   className,
 }: ComponentConfigFormProps<T>) => {
-  const defaultValues = useMemo(
-    () => Object.fromEntries(items.map(item => [item.name, item.defaultValue])),
-    [items],
-  )
+  const defaultValues = useMemo(() => Object.fromEntries(items.map((item) => [item.name, item.defaultValue])), [items])
 
   const form = useForm({ defaultValues })
 
@@ -66,7 +72,7 @@ export const ComponentConfigForm = <T extends Record<string, any>>({
   return (
     <Form {...form}>
       <form className={cn('space-y-2.5', className)}>
-        {items.map(item => {
+        {items.map((item) => {
           switch (item.type) {
             case 'select':
               return (
@@ -83,7 +89,11 @@ export const ComponentConfigForm = <T extends Record<string, any>>({
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        {item.options.map(opt => <SelectItem key={opt} value={opt}>{opt}</SelectItem>)}
+                        {item.options.map((opt) => (
+                          <SelectItem key={opt} value={opt}>
+                            {opt}
+                          </SelectItem>
+                        ))}
                       </SelectContent>
                     </Select>
                   )}
@@ -129,9 +139,14 @@ export const ComponentConfigForm = <T extends Record<string, any>>({
                       <Segmented
                         className="grid"
                         style={{ gridTemplateColumns: `repeat(${item.options.length}, minmax(0, 1fr))` }}
-                        value={field.value} onValueChange={field.onChange}
+                        value={field.value}
+                        onValueChange={field.onChange}
                       >
-                        {item.options.map(opt => <SegmentedItem value={opt} key={opt}>{opt}</SegmentedItem>)}
+                        {item.options.map((opt) => (
+                          <SegmentedItem value={opt} key={opt}>
+                            {opt}
+                          </SegmentedItem>
+                        ))}
                       </Segmented>
                     </FormControl>
                   )}
@@ -144,7 +159,7 @@ export const ComponentConfigForm = <T extends Record<string, any>>({
                   name={item.name}
                   control={form.control}
                   render={({ field }) => (
-                    <FormItem className="flex justify-between items-center">
+                    <FormItem className="flex items-center justify-between">
                       <div>
                         <FormLabel>{item.displayName ?? item.name}</FormLabel>
                         {item.description && <FormDescription>{item.description}</FormDescription>}

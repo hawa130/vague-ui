@@ -1,4 +1,5 @@
 import { Alert, type AlertProps } from '@/registry/default/ui/alert'
+
 import {
   ComponentPreviewCard,
   ComponentPreviewHeader,

@@ -1,8 +1,10 @@
 import { ComponentProps, useState } from 'react'
-import { Slider } from '@/registry/default/ui/slider'
-import { Progress } from '@/registry/default/ui/progress'
+
 import { Input } from '@/registry/default/ui/input'
+import { Progress } from '@/registry/default/ui/progress'
 import { RingProgress } from '@/registry/default/ui/ring-progress'
+import { Slider } from '@/registry/default/ui/slider'
+
 import {
   ComponentPreviewCard,
   ComponentPreviewHeader,
@@ -47,17 +49,15 @@ export const SliderPreview = () => {
             onChange={(e) => setValue(Number(e.target.value))}
           />
         </div>
-        <div className="w-2/3 mt-6">
-        <Slider value={[value]} onValueChange={([v]) => setValue(v)} {...sliderProps} />
+        <div className="mt-6 w-2/3">
+          <Slider value={[value]} onValueChange={([v]) => setValue(v)} {...sliderProps} />
         </div>
-        <div className="w-2/3 mt-7">
+        <div className="mt-7 w-2/3">
           <Progress value={value} max={sliderProps.max!} />
         </div>
         <div className="mt-7">
           <RingProgress value={value} max={sliderProps.max!}>
-            <div className="text-sm font-medium">
-              {(value / sliderProps.max! * 100).toFixed(1)}%
-            </div>
+            <div className="text-sm font-medium">{((value / sliderProps.max!) * 100).toFixed(1)}%</div>
           </RingProgress>
         </div>
       </ComponentPreviewCard>

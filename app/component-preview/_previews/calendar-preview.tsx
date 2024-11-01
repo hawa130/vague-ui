@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import type { DateRange } from 'react-day-picker'
 import { addDays } from 'date-fns'
+import type { DateRange } from 'react-day-picker'
 
 import { Calendar } from '@/registry/default/ui/calendar'
 
@@ -53,12 +53,7 @@ export const CalendarPreview = () => {
             numberOfMonths={2}
           />
         ) : (
-          <Calendar
-            language={props.language}
-            mode="single"
-            selected={date}
-            onSelect={setDate}
-          />
+          <Calendar language={props.language} mode="single" selected={date} onSelect={setDate} />
         )}
       </ComponentPreviewCard>
     </section>

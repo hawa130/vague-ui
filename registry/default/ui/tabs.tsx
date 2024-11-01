@@ -1,8 +1,8 @@
 'use client'
 
+import * as React from 'react'
 import * as TabsPrimitive from '@radix-ui/react-tabs'
 import { cva, VariantProps } from 'class-variance-authority'
-import * as React from 'react'
 
 import { cn } from '@/lib/utils'
 
@@ -70,7 +70,7 @@ const TabsContent = React.forwardRef<
   <TabsPrimitive.Content
     ref={ref}
     className={cn(
-      'ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring-focus focus-visible:ring-offset-0',
+      'focus-visible:ring-ring-focus ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-0',
       className,
     )}
     {...props}

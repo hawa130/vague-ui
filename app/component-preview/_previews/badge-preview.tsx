@@ -1,4 +1,5 @@
 import { Badge, BadgeProps } from '@/registry/default/ui/badge'
+
 import {
   ComponentPreviewCard,
   ComponentPreviewHeader,

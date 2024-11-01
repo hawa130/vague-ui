@@ -1,4 +1,5 @@
 import { HTMLAttributes, ReactNode } from 'react'
+
 import { cn } from '@/lib/utils'
 
 export interface ComponentPreviewCardProps extends HTMLAttributes<HTMLDivElement> {
@@ -8,24 +9,18 @@ export interface ComponentPreviewCardProps extends HTMLAttributes<HTMLDivElement
 export const ComponentPreviewCard = ({ className, children, form, ...props }: ComponentPreviewCardProps) => {
   return (
     <div
-      className={cn('overflow-auto border rounded-lg',
-        !!form && 'grid md:grid-cols-[minmax(0,1fr)_240px]',
-        className,
-      )}
+      className={cn('overflow-auto rounded-lg border', !!form && 'grid md:grid-cols-[minmax(0,1fr)_240px]', className)}
       {...props}
     >
       <ComponentPreviewSection>{children}</ComponentPreviewSection>
-      {!!form && <div className="<md:border-t md:border-l p-4 bg-body">{form}</div>}
+      {!!form && <div className="<md:border-t bg-body p-4 md:border-l">{form}</div>}
     </div>
   )
 }
 
 export const ComponentPreviewSection = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
   return (
-    <div
-      className={cn('flex flex-col items-center justify-center p-4 bg-dots min-h-[120px]', className)}
-      {...props}
-    />
+    <div className={cn('bg-dots flex min-h-[120px] flex-col items-center justify-center p-4', className)} {...props} />
   )
 }
 

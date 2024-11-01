@@ -1,9 +1,9 @@
 import { Search } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
+import { Button } from '@/registry/default/ui/button'
 import { Input, inputWrapperVariants } from '@/registry/default/ui/input'
 import { Textarea } from '@/registry/default/ui/textarea'
-import { Button } from '@/registry/default/ui/button'
 
 import {
   ComponentPreviewCard,
@@ -29,16 +29,16 @@ export const InputPreview = () => {
         <ComponentPreviewTitle>Input</ComponentPreviewTitle>
       </ComponentPreviewHeader>
       <ComponentPreviewCard form={form}>
-        <div className="w-full flex flex-col items-center gap-3">
+        <div className="flex w-full flex-col items-center gap-3">
           <section className="w-full">
-            <div className="w-full text-sm mb-1">Input</div>
+            <div className="mb-1 w-full text-sm">Input</div>
             <Input type="email" placeholder="Email" {...props} />
           </section>
           <section className="w-full">
-            <div className="w-full text-sm mb-1">Combined Input</div>
-            <div className="w-full flex join">
+            <div className="mb-1 w-full text-sm">Combined Input</div>
+            <div className="join flex w-full">
               <label className={cn(inputWrapperVariants(), 'flex-grow')}>
-                <Search className="h-4 w-4 mr-2 text-muted-fg" />
+                <Search className="text-muted-fg mr-2 h-4 w-4" />
                 <input placeholder="Search..." {...props} />
               </label>
               <Button className="flex-shrink-0" size="icon-md">
@@ -47,7 +47,7 @@ export const InputPreview = () => {
             </div>
           </section>
           <section className="w-full">
-            <div className="w-full text-sm mb-1">Textarea</div>
+            <div className="mb-1 w-full text-sm">Textarea</div>
             <Textarea placeholder="Type your message here." {...props} />
           </section>
         </div>

@@ -1,7 +1,7 @@
 'use client'
 
-import * as SliderPrimitive from '@radix-ui/react-slider'
 import * as React from 'react'
+import * as SliderPrimitive from '@radix-ui/react-slider'
 
 import { cn } from '@/lib/utils'
 
@@ -17,7 +17,7 @@ const Slider = React.forwardRef<
     <SliderPrimitive.Track className="relative h-1.5 w-full grow overflow-hidden rounded-full bg-muted">
       <SliderPrimitive.Range className={cn('absolute h-full bg-primary', rangeClassname)} />
     </SliderPrimitive.Track>
-    <SliderPrimitive.Thumb className="active:bg-accent-dark block h-5 w-5 cursor-pointer rounded-full border border-input bg-background shadow-md ring-offset-background transition-colors hover:border-ring-accent hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring-focus focus-visible:ring-offset-0 disabled:pointer-events-none disabled:opacity-50" />
+    <SliderPrimitive.Thumb className="active:bg-accent-dark hover:border-ring-accent focus-visible:ring-ring-focus block h-5 w-5 cursor-pointer rounded-full border border-input bg-background shadow-md ring-offset-background transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-0 disabled:pointer-events-none disabled:opacity-50" />
   </SliderPrimitive.Root>
 ))
 Slider.displayName = SliderPrimitive.Root.displayName

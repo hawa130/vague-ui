@@ -1,6 +1,8 @@
 import { ComponentProps } from 'react'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/registry/default/ui/tooltip'
+
 import { Button } from '@/registry/default/ui/button'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/registry/default/ui/tooltip'
+
 import {
   ComponentPreviewCard,
   ComponentPreviewHeader,
@@ -43,9 +45,7 @@ export const TooltipPreview = () => {
             <TooltipTrigger asChild>
               <Button>Hover on me</Button>
             </TooltipTrigger>
-            <TooltipContent {...contentProps}>
-              This is a tooltip
-            </TooltipContent>
+            <TooltipContent {...contentProps}>This is a tooltip</TooltipContent>
           </Tooltip>
         </TooltipProvider>
       </ComponentPreviewCard>
