@@ -1,40 +1,66 @@
 'use client'
 
 import * as TabsPrimitive from '@radix-ui/react-tabs'
+import { cva, VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 
 import { cn } from '@/lib/utils'
+
+export const tabsListVariants = cva('inline-flex items-center justify-center', {
+  variants: {
+    variant: {
+      default: 'h-9 rounded-lg bg-segment p-1',
+      line: 'gap-1 relative after:z-[-1] after:absolute after:bottom-0 after:inset-x-0 after:border-b after:border-input',
+      button: 'gap-2',
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+  },
+})
+
+export const tabsTriggerVariants = cva(
+  'px-3 inline-flex items-center justify-center whitespace-nowrap text-sm transition focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50',
+  {
+    variants: {
+      variant: {
+        default:
+          'text-segment-fg py-1 rounded-md font-medium ring-offset-background focus-visible:ring-2 focus-visible:ring-ring-focus focus-visible:ring-offset-2 data-[state=active]:bg-segment-active data-[state=active]:text-segment-active-fg data-[state=active]:shadow hover:data-[state=inactive]:bg-accent hover:data-[state=inactive]:text-accent-fg',
+        line: 'text-foreground/70 pt-1.5 pb-3 rounded-md relative z-0 data-[state=active]:font-medium hover:text-accent-fg data-[state=active]:text-primary before:z-[-1] before:absolute before:inset-x-0 before:top-0 before:bottom-1.5 before:rounded-md before:transition-colors hover:before:bg-accent hover:data-[state=active]:before:bg-primary-light data-[state=active]:after:absolute data-[state=active]:after:h-[3px] data-[state=active]:after:bg-primary data-[state=active]:after:bottom-0 data-[state=active]:after:inset-x-3 data-[state=active]:after:rounded-full focus-visible:before:ring-2 focus-visible:before:ring-ring',
+        button:
+          'h-9 px-3 rounded-md text-foreground/70 data-[state=active]:font-medium data-[state=active]:text-primary data-[state=active]:bg-primary-light hover:data-[state=inactive]:bg-accent hover:data-[state=inactive]:text-accent-fg',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+    },
+  },
+)
+
+const TabsListVariantContext = React.createContext<Pick<VariantProps<typeof tabsListVariants>, 'variant'>>({
+  variant: 'default',
+})
 
 const Tabs = TabsPrimitive.Root
 
 const TabsList = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.List>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
->(({ className, ...props }, ref) => (
-  <TabsPrimitive.List
-    ref={ref}
-    className={cn(
-      'inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground',
-      className,
-    )}
-    {...props}
-  />
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.List> & VariantProps<typeof tabsListVariants>
+>(({ className, variant, children, ...props }, ref) => (
+  <TabsPrimitive.List ref={ref} className={cn(tabsListVariants({ variant, className }))} {...props}>
+    <TabsListVariantContext.Provider value={{ variant }}>{children}</TabsListVariantContext.Provider>
+  </TabsPrimitive.List>
 ))
 TabsList.displayName = TabsPrimitive.List.displayName
 
 const TabsTrigger = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
->(({ className, ...props }, ref) => (
-  <TabsPrimitive.Trigger
-    ref={ref}
-    className={cn(
-      'inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm',
-      className,
-    )}
-    {...props}
-  />
-))
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger> & VariantProps<typeof tabsTriggerVariants>
+>(({ className, variant: customVariant, ...props }, ref) => {
+  const { variant: listVariant } = React.useContext(TabsListVariantContext)
+  const variant = customVariant || listVariant
+  return <TabsPrimitive.Trigger ref={ref} className={cn(tabsTriggerVariants({ variant, className }))} {...props} />
+})
 TabsTrigger.displayName = TabsPrimitive.Trigger.displayName
 
 const TabsContent = React.forwardRef<
@@ -44,7 +70,7 @@ const TabsContent = React.forwardRef<
   <TabsPrimitive.Content
     ref={ref}
     className={cn(
-      'mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+      'ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring-focus focus-visible:ring-offset-0',
       className,
     )}
     {...props}

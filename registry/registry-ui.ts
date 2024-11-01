@@ -68,6 +68,7 @@ export const ui: Registry = [
     name: 'button',
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-slot'],
+    registryDependencies: ['spinner'],
     files: ['ui/button.tsx'],
   },
   {
@@ -141,6 +142,7 @@ export const ui: Registry = [
     name: 'context-menu',
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-context-menu'],
+    registryDependencies: ['dropdown-menu'],
     files: ['ui/context-menu.tsx'],
   },
   {
@@ -195,6 +197,7 @@ export const ui: Registry = [
     name: 'menubar',
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-menubar'],
+    registryDependencies: ['dropdown-menu'],
     files: ['ui/menubar.tsx'],
   },
   {
@@ -269,12 +272,12 @@ export const ui: Registry = [
           extend: {
             colors: {
               sidebar: {
-                DEFAULT: 'hsl(var(--sidebar-background))',
-                foreground: 'hsl(var(--sidebar-foreground))',
+                DEFAULT: 'hsl(var(--sidebar-bg))',
+                fg: 'hsl(var(--sidebar-fg))',
                 primary: 'hsl(var(--sidebar-primary))',
-                'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+                'primary-fg': 'hsl(var(--sidebar-primary-fg))',
                 accent: 'hsl(var(--sidebar-accent))',
-                'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+                'accent-fg': 'hsl(var(--sidebar-accent-fg))',
                 border: 'hsl(var(--sidebar-border))',
                 ring: 'hsl(var(--sidebar-ring))',
               },
@@ -285,22 +288,22 @@ export const ui: Registry = [
     },
     cssVars: {
       light: {
-        'sidebar-background': '0 0% 98%',
-        'sidebar-foreground': '240 5.3% 26.1%',
+        'sidebar-bg': '0 0% 98%',
+        'sidebar-fg': '240 5.3% 26.1%',
         'sidebar-primary': '240 5.9% 10%',
-        'sidebar-primary-foreground': '0 0% 98%',
+        'sidebar-primary-fg': '0 0% 98%',
         'sidebar-accent': '240 4.8% 95.9%',
-        'sidebar-accent-foreground': '240 5.9% 10%',
+        'sidebar-accent-fg': '240 5.9% 10%',
         'sidebar-border': '220 13% 91%',
         'sidebar-ring': '217.2 91.2% 59.8%',
       },
       dark: {
-        'sidebar-background': '240 5.9% 10%',
-        'sidebar-foreground': '240 4.8% 95.9%',
+        'sidebar-bg': '240 5.9% 10%',
+        'sidebar-fg': '240 4.8% 95.9%',
         'sidebar-primary': '224.3 76.3% 48%',
-        'sidebar-primary-foreground': '0 0% 100%',
+        'sidebar-primary-fg': '0 0% 100%',
         'sidebar-accent': '240 3.7% 15.9%',
-        'sidebar-accent-foreground': '240 4.8% 95.9%',
+        'sidebar-accent-fg': '240 4.8% 95.9%',
         'sidebar-border': '240 3.7% 15.9%',
         'sidebar-ring': '217.2 91.2% 59.8%',
       },
@@ -309,6 +312,7 @@ export const ui: Registry = [
   {
     name: 'skeleton',
     type: 'registry:ui',
+    dependencies: ['@radix-ui/react-slot'],
     files: ['ui/skeleton.tsx'],
   },
   {
@@ -363,5 +367,72 @@ export const ui: Registry = [
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-tooltip'],
     files: ['ui/tooltip.tsx'],
+  },
+  {
+    name: 'ring-progress',
+    type: 'registry:ui',
+    files: ['ui/ring-progress.tsx'],
+  },
+  {
+    name: 'segmented',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-radio-group'],
+    files: ['ui/segmented.tsx'],
+    tailwind: {
+      config: {
+        theme: {
+          extend: {
+            colors: {
+              segment: {
+                DEFAULT: 'hsl(var(--segment))',
+                fg: 'hsl(var(--segment-fg))',
+                active: {
+                  DEFAULT: 'hsl(var(--segment-active))',
+                  fg: 'hsl(var(--segment-active-fg))',
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+  {
+    name: 'spinner',
+    type: 'registry:ui',
+    files: ['ui/spinner.tsx'],
+    tailwind: {
+      config: {
+        theme: {
+          extend: {
+            keyframes: {
+              'spinner-inner': {
+                '0%': {
+                  strokeDasharray: '0 150',
+                  strokeDashoffset: '0',
+                },
+                '47.5%': {
+                  strokeDasharray: '42 150',
+                  strokeDashoffset: '-16',
+                },
+                '95%, 100%': {
+                  strokeDasharray: '42 150',
+                  strokeDashoffset: '-59',
+                },
+              },
+              'spinner-outer': {
+                '100%': {
+                  transform: 'rotate(360deg)',
+                },
+              },
+            },
+            animation: {
+              'spinner-inner': 'spinner-inner 1.5s ease-in-out infinite',
+              'spinner-outer': 'spinner-outer 2s linear infinite',
+            },
+          },
+        },
+      },
+    },
   },
 ]

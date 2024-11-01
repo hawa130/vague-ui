@@ -1,10 +1,13 @@
 {
   "name": "skeleton",
   "type": "registry:ui",
+  "dependencies": [
+    "@radix-ui/react-slot"
+  ],
   "files": [
     {
       "path": "ui/skeleton.tsx",
-      "content": "import { cn } from '@/lib/utils'\n\nfunction Skeleton({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {\n  return <div className={cn('animate-pulse rounded-md bg-muted', className)} {...props} />\n}\n\nexport { Skeleton }\n",
+      "content": "import { Slot } from '@radix-ui/react-slot'\n\nimport { cn } from '@/lib/utils'\n\nfunction Skeleton({\n  className,\n  asChild,\n  ...props\n}: React.HTMLAttributes<HTMLDivElement> & {\n  asChild?: boolean\n}) {\n  const Comp = asChild ? Slot : 'div'\n\n  return <Comp className={cn('bg-muted-fg/15 animate-pulse rounded-md', className)} {...props} />\n}\n\nexport { Skeleton }\n",
       "type": "registry:ui",
       "target": ""
     }
