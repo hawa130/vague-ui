@@ -2,7 +2,9 @@ import { writeFile } from 'node:fs/promises'
 
 import * as radixColors from '@radix-ui/colors'
 
-let file = `export const colors = {
+let file = `import { Colors } from '@/registry/colors/types'
+
+export default {
   inherit: 'inherit',
   current: 'currentColor',
   transparent: 'transparent',
@@ -39,9 +41,9 @@ async function generatePalette() {
     file += `  ],\n`
   })
 
-  file += `}\n`
+  file += `} satisfies Colors\n`
 
-  await writeFile('registry/radix-colors-palette.ts', file)
+  await writeFile('registry/colors/palettes/radix-colors.ts', file)
 }
 
 async function generateMapping() {
@@ -67,12 +69,12 @@ async function generateMapping() {
   }
 
   await writeFile(
-    'registry/radix-colors-mapping.ts',
+    'registry/colors/radix-color-mapping.ts',
     `export const colorMapping = ${JSON.stringify(cssVars, null, 2).replaceAll('"', "'")}`,
   )
 }
 
-await generateMapping()
+await generatePalette()
 
 // ====================
 // Helper functions

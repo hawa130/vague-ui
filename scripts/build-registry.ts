@@ -7,18 +7,15 @@ import { Project, ScriptKind } from 'ts-morph'
 import { z } from 'zod'
 
 import { registry } from '@/registry'
-import { colorMapping, colors } from '@/registry/radix-colors'
 import { styles } from '@/registry/registry-styles'
-import {
-  Registry,
-  RegistryEntry,
-  registryEntrySchema,
-  registryItemTypeSchema,
-  registrySchema,
-} from '@/registry/schema'
-import { buildColorsData } from '@/registry/registry-themes'
+import { buildColorsData, colorMapping, colors } from '@/registry/registry-themes'
+import { Registry, RegistryEntry, registryEntrySchema, registryItemTypeSchema, registrySchema } from '@/registry/schema'
 
 const REGISTRY_PATH = path.join(process.cwd(), 'public/registry')
+
+if (!existsSync(REGISTRY_PATH)) {
+  await fs.mkdir(REGISTRY_PATH, { recursive: true })
+}
 
 const REGISTRY_INDEX_WHITELIST: z.infer<typeof registryItemTypeSchema>[] = [
   'registry:ui',
@@ -172,10 +169,7 @@ async function buildStyles(registry: Registry) {
 
             let content: string
             try {
-              content = await fs.readFile(
-                path.join(process.cwd(), 'registry', style.name, file.path),
-                'utf8',
-              )
+              content = await fs.readFile(path.join(process.cwd(), 'registry', style.name, file.path), 'utf8')
             } catch (error) {
               return
             }
@@ -214,11 +208,7 @@ async function buildStyles(registry: Registry) {
         })
 
       if (payload.success) {
-        await fs.writeFile(
-          path.join(targetPath, `${item.name}.json`),
-          JSON.stringify(payload.data, null, 2),
-          'utf8',
-        )
+        await fs.writeFile(path.join(targetPath, `${item.name}.json`), JSON.stringify(payload.data, null, 2), 'utf8')
       }
     }
   }
@@ -257,11 +247,7 @@ async function buildStylesIndex() {
       files: [],
     }
 
-    await fs.writeFile(
-      path.join(targetPath, 'index.json'),
-      JSON.stringify(payload, null, 2),
-      'utf8',
-    )
+    await fs.writeFile(path.join(targetPath, 'index.json'), JSON.stringify(payload, null, 2), 'utf8')
   }
 }
 
@@ -277,11 +263,7 @@ async function buildThemes() {
 
   const colorsData = buildColorsData(colors) as Record<string, any>
 
-  await fs.writeFile(
-    path.join(colorsTargetPath, 'index.json'),
-    JSON.stringify(colorsData, null, 2),
-    'utf8',
-  )
+  await fs.writeFile(path.join(colorsTargetPath, 'index.json'), JSON.stringify(colorsData, null, 2), 'utf8')
 
   // ----------------------------------------------------------------------------
   // Build registry/colors/[base].json.
@@ -318,11 +300,7 @@ async function buildThemes() {
       }
     }
 
-    await fs.writeFile(
-      path.join(REGISTRY_PATH, `colors/${baseColor}.json`),
-      JSON.stringify(base, null, 2),
-      'utf8',
-    )
+    await fs.writeFile(path.join(REGISTRY_PATH, `colors/${baseColor}.json`), JSON.stringify(base, null, 2), 'utf8')
   }
 }
 

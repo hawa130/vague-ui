@@ -1,18 +1,16 @@
-import { colors as defaultColors, colorMapping as defaultMapping } from './default-colors'
-import { colors as radixColors, colorMapping as radixMapping } from './radix-colors'
+import defaultMapping from './colors/mapping/default-mapping'
+import radixColors from './colors/palettes/radix-colors'
+import { ColorMapping, Colors, ColorsData, ColorsDataEntry } from './colors/types'
 import { Registry } from './schema'
-import { ColorMapping, Colors, ColorsData, ColorsDataEntry } from './types'
+
+export const colorMapping: ColorMapping = defaultMapping
+export const colors: Colors = radixColors
 
 export const themes: Registry = [
   {
     name: 'theme-default',
     type: 'registry:theme',
-    cssVars: transformTheme(defaultMapping, defaultColors),
-  },
-  {
-    name: 'theme-radix',
-    type: 'registry:theme',
-    cssVars: transformTheme(radixMapping, radixColors),
+    cssVars: transformTheme(defaultMapping, radixColors),
   },
 ]
 
