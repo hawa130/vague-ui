@@ -10,21 +10,10 @@ import { useConfigForm } from '../_hooks/use-config-form'
 export const BadgePreview = () => {
   const { props, form } = useConfigForm<BadgeProps>([
     {
-      name: 'children',
-      type: 'input',
-      defaultValue: 'Badge',
-    },
-    {
-      name: 'variant',
-      type: 'select',
-      options: ['filled', 'light', 'outline', 'dashed'],
-      defaultValue: 'filled',
-    },
-    {
       name: 'color',
       type: 'select',
       options: ['default', 'primary', 'destructive', 'warning', 'success', 'info'],
-      defaultValue: 'default',
+      defaultValue: 'primary',
     },
     {
       name: 'size',
@@ -45,7 +34,17 @@ export const BadgePreview = () => {
         <ComponentPreviewTitle>Badge</ComponentPreviewTitle>
       </ComponentPreviewHeader>
       <ComponentPreviewCard form={form}>
-        <Badge {...props} />
+        <div className="flex flex-wrap gap-4">
+          {['filled', 'soft', 'surface', 'outline', 'dashed', 'dot'].map((variant) => (
+            <Badge key={variant} {...props} variant={variant as any}>
+              {variant}
+            </Badge>
+          ))}
+        </div>
+        <div className="mt-4 flex items-center gap-2 text-sm">
+          <Badge {...props} />
+          {props.color}
+        </div>
       </ComponentPreviewCard>
     </section>
   )

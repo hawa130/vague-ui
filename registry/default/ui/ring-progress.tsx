@@ -73,7 +73,10 @@ const Curve = forwardRef<SVGCircleElement, CurveProps>(
         ref={ref}
         fill="none"
         data-root={root ? '' : undefined}
-        className={cn('stroke-primary transition-[stroke-dashoffset] duration-200 data-[root]:stroke-muted', className)}
+        className={cn(
+          'stroke-primary-9 transition-[stroke-dashoffset] duration-200 data-[root]:stroke-muted',
+          className,
+        )}
         cx={size / 2}
         cy={size / 2}
         r={radius}

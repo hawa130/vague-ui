@@ -8,7 +8,7 @@ export const Spinner = forwardRef<SVGSVGElement, ComponentPropsWithoutRef<'svg'>
       ref={ref}
       width="24"
       height="24"
-      className={cn('animate-spinner-outer origin-center', className)}
+      className={cn('origin-center animate-spinner-outer', className)}
       viewBox="0 0 24 24"
       stroke="currentColor"
       {...props}

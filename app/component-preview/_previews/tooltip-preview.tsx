@@ -40,7 +40,7 @@ export const TooltipPreview = () => {
         <ComponentPreviewTitle>Tooltip</ComponentPreviewTitle>
       </ComponentPreviewHeader>
       <ComponentPreviewCard form={form}>
-        <TooltipProvider delayDuration={100}>
+        <TooltipProvider delayDuration={0}>
           <Tooltip>
             <TooltipTrigger asChild>
               <Button>Hover on me</Button>

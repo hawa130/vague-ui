@@ -18,134 +18,7 @@ let file = `export const colors = {
   },
 `
 
-const MAPPING = `
-export const colorMapping = {
-  light: {
-    background: 'white',
-    foreground: 'gray-12',
-    'fg-invert': 'white',
-    card: 'white',
-    'card-fg': 'gray-12',
-    popover: 'white',
-    'popover-fg': 'gray-12',
-    secondary: 'gray-3',
-    'secondary-fg': 'gray-12',
-    muted: 'gray-3',
-    'muted-fg': 'gray-11',
-    segment: 'gray-3',
-    'segment-fg': 'gray-11',
-    'segment-active': 'white',
-    'segment-active-fg': 'gray-12',
-    accent: 'gray-4',
-    'accent-dark': 'gray-5',
-    'accent-fg': 'gray-12',
-    'primary-1': 'teal-3',
-    'primary-2': 'teal-4',
-    'primary-3': 'teal-5',
-    primary: 'teal-9',
-    'primary-5': 'teal-10',
-    'primary-6': 'teal-11',
-    'destructive-1': 'red-3',
-    'destructive-2': 'red-4',
-    'destructive-3': 'red-5',
-    destructive: 'red-9',
-    'destructive-5': 'red-10',
-    'destructive-6': 'red-11',
-    'warning-1': 'yellow-3',
-    'warning-2': 'yellow-4',
-    'warning-3': 'yellow-5',
-    warning: 'yellow-9',
-    'warning-5': 'yellow-10',
-    'warning-6': 'yellow-11',
-    'success-1': 'green-3',
-    'success-2': 'green-4',
-    'success-3': 'green-5',
-    success: 'green-9',
-    'success-5': 'green-10',
-    'success-6': 'green-11',
-    'info-1': 'blue-3',
-    'info-2': 'blue-4',
-    'info-3': 'blue-5',
-    info: 'blue-9',
-    'info-5': 'blue-10',
-    'info-6': 'blue-11',
-    body: 'gray-1',
-    button: 'white',
-    border: 'gray-6',
-    input: 'gray-4',
-    'ring-accent': 'gray-7',
-    'ring-focus': 'gray-8',
-    'chart-1': '12 76% 61%',
-    'chart-2': '173 58% 39%',
-    'chart-3': '197 37% 24%',
-    'chart-4': '43 74% 66%',
-    'chart-5': '27 87% 67%',
-  },
-  dark: {
-    background: 'grayDark-1',
-    foreground: 'grayDark-12',
-    'fg-invert': 'grayDark-1',
-    card: 'grayDark-1',
-    'card-fg': 'grayDark-12',
-    popover: 'grayDark-1',
-    'popover-fg': 'grayDark-12',
-    secondary: 'grayDark-3',
-    'secondary-fg': 'grayDark-12',
-    muted: 'grayDark-3',
-    'muted-fg': 'grayDark-11',
-    segment: 'grayDark-3',
-    'segment-fg': 'grayDark-11',
-    'segment-active': 'grayDark-1',
-    'segment-active-fg': 'grayDark-12',
-    accent: 'grayDark-4',
-    'accent-dark': 'grayDark-5',
-    'accent-fg': 'grayDark-12',
-    'primary-1': 'tealDark-3',
-    'primary-2': 'tealDark-4',
-    'primary-3': 'tealDark-5',
-    primary: 'tealDark-9',
-    'primary-5': 'tealDark-10',
-    'primary-6': 'tealDark-11',
-    'destructive-1': 'redDark-3',
-    'destructive-2': 'redDark-4',
-    'destructive-3': 'redDark-5',
-    destructive: 'redDark-9',
-    'destructive-5': 'redDark-10',
-    'destructive-6': 'redDark-11',
-    'warning-1': 'yellowDark-3',
-    'warning-2': 'yellowDark-4',
-    'warning-3': 'yellowDark-5',
-    warning: 'yellowDark-9',
-    'warning-5': 'yellowDark-10',
-    'warning-6': 'yellowDark-11',
-    'success-1': 'greenDark-3',
-    'success-2': 'greenDark-4',
-    'success-3': 'greenDark-5',
-    success: 'greenDark-9',
-    'success-5': 'greenDark-10',
-    'success-6': 'greenDark-11',
-    'info-1': 'blueDark-3',
-    'info-2': 'blueDark-4',
-    'info-3': 'blueDark-5',
-    info: 'blueDark-9',
-    'info-5': 'blueDark-10',
-    'info-6': 'blueDark-11',
-    body: 'grayDark-2',
-    button: 'grayDark-3',
-    border: 'grayDark-6',
-    input: 'grayDark-4',
-    'ring-accent': 'grayDark-7',
-    'ring-focus': 'grayDark-8',
-    'chart-1': '12 76% 61%',
-    'chart-2': '173 58% 39%',
-    'chart-3': '197 37% 24%',
-    'chart-4': '43 74% 66%',
-    'chart-5': '27 87% 67%',
-  },
-} as const
-`
-
-async function generate() {
+async function generatePalette() {
   Object.entries(radixColors).forEach(([colorName, color]) => {
     if (colorName.match(/(P3|A)$/) || colorName === 'default') return
 
@@ -168,12 +41,38 @@ async function generate() {
 
   file += `}\n`
 
-  file += MAPPING
-
-  await writeFile('registry/radix-colors.ts', file)
+  await writeFile('registry/radix-colors-palette.ts', file)
 }
 
-await generate()
+async function generateMapping() {
+  const baseMap = {
+    primary: 'indigo',
+    destructive: 'red',
+    warning: 'orange',
+    success: 'green',
+    info: 'blue',
+    gray: 'gray',
+  }
+
+  const cssVars: Record<string, Record<string, string>> = {
+    light: {},
+    dark: {},
+  }
+
+  for (const [base, color] of Object.entries(baseMap)) {
+    Array.from({ length: 12 }, (_, i) => i + 1).forEach((scale) => {
+      cssVars.light[`${base}-${scale}`] = `${color}-${scale}`
+      cssVars.dark[`${base}-${scale}`] = `${color}Dark-${scale}`
+    })
+  }
+
+  await writeFile(
+    'registry/radix-colors-mapping.ts',
+    `export const colorMapping = ${JSON.stringify(cssVars, null, 2).replaceAll('"', "'")}`,
+  )
+}
+
+await generateMapping()
 
 // ====================
 // Helper functions

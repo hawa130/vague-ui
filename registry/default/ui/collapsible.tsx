@@ -16,7 +16,7 @@ const CollapsibleContent = forwardRef<
   return (
     <CollapsiblePrimitive.CollapsibleContent
       className={cn(
-        'data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up overflow-y-hidden',
+        'overflow-y-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down',
         className,
       )}
       ref={ref}

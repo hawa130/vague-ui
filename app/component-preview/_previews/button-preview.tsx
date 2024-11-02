@@ -10,21 +10,10 @@ import { useConfigForm } from '../_hooks/use-config-form'
 export const ButtonPreview = () => {
   const { form, props } = useConfigForm<ButtonProps>([
     {
-      name: 'children',
-      type: 'input',
-      defaultValue: 'Button',
-    },
-    {
-      name: 'variant',
-      type: 'select',
-      options: ['filled', 'light', 'soft', 'outline', 'dashed', 'ghost', 'subtle'],
-      defaultValue: 'filled',
-    },
-    {
       name: 'color',
       type: 'select',
       options: ['default', 'primary', 'destructive', 'warning', 'success', 'info'],
-      defaultValue: 'default',
+      defaultValue: 'primary',
     },
     {
       name: 'size',
@@ -50,7 +39,13 @@ export const ButtonPreview = () => {
         <ComponentPreviewTitle>Button</ComponentPreviewTitle>
       </ComponentPreviewHeader>
       <ComponentPreviewCard form={form}>
-        <Button {...props} />
+        <div className="flex gap-4 flex-wrap">
+          {['filled', 'soft', 'light', 'outline', 'dashed', 'surface', 'subtle', 'ghost'].map((variant) => (
+            <Button key={variant} {...props} variant={variant as any}>
+              {variant}
+            </Button>
+          ))}
+        </div>
       </ComponentPreviewCard>
     </section>
   )

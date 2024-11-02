@@ -43,7 +43,7 @@ const Progress = React.forwardRef<React.ElementRef<typeof ProgressPrimitive.Root
         {...props}
       >
         <ProgressPrimitive.Indicator
-          className={cn('bg-primary transition-[width] duration-200', rounded && 'rounded-full', rangeClassname)}
+          className={cn('bg-primary-9 transition-[width] duration-200', rounded && 'rounded-full', rangeClassname)}
           style={{
             width: orientation === 'horizontal' ? `${percentage}%` : '100%',
             height: orientation === 'vertical' ? `${percentage}%` : '100%',

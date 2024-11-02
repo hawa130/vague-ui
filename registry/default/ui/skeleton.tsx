@@ -11,7 +11,7 @@ function Skeleton({
 }) {
   const Comp = asChild ? Slot : 'div'
 
-  return <Comp className={cn('bg-muted-fg/15 animate-pulse rounded-md', className)} {...props} />
+  return <Comp className={cn('animate-pulse rounded-md bg-muted-fg/15', className)} {...props} />
 }
 
 export { Skeleton }

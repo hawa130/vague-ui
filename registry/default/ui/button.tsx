@@ -11,12 +11,13 @@ const buttonVariants = cva(
     variants: {
       variant: {
         filled: '',
-        outline: 'border',
-        dashed: 'border border-dashed',
-        ghost: 'hover:bg-accent active:bg-accent-dark',
+        outline: 'border focus-visible:border-ring-focus',
+        dashed: 'border border-dashed focus-visible:border-ring-focus',
+        ghost: 'hover:bg-accent-light active:bg-accent-dark',
         light: 'bg-secondary hover:bg-accent active:bg-accent-dark',
         subtle: '',
         soft: '',
+        surface: 'border focus-visible:border-ring-focus',
       },
       color: {
         default: '',
@@ -43,7 +44,12 @@ const buttonVariants = cva(
     },
     compoundVariants: [
       {
-        variant: ['filled', 'light', 'soft'],
+        variant: 'filled',
+        color: 'default',
+        className: 'bg-invert-1 text-fg-invert hover:bg-invert-2 active:bg-invert-3',
+      },
+      {
+        variant: ['light', 'soft'],
         color: 'default',
         className: 'bg-secondary text-secondary-fg hover:bg-accent hover:text-accent-fg active:bg-accent-dark',
       },
@@ -51,143 +57,175 @@ const buttonVariants = cva(
         variant: ['outline', 'dashed'],
         color: 'default',
         className:
-          'border-input bg-button hover:bg-accent hover:text-accent-fg hover:border-ring-accent active:bg-accent-dark',
+          'border-input bg-button hover:bg-accent-light hover:text-accent-fg hover:border-ring-accent active:bg-accent-dark',
       },
       {
         variant: ['ghost', 'subtle'],
         color: 'default',
-        className: 'hover:text-accent-fg hover:bg-accent active:bg-accent-dark',
+        className: 'hover:text-accent-fg hover:bg-accent-light active:bg-accent-dark',
+      },
+      {
+        variant: 'surface',
+        color: 'default',
+        className:
+          'bg-gray-2 border-gray-6 text-gray-12 hover:bg-gray-3 hover:border-gray-7 active:bg-gray-4 active:border-gray-8',
       },
       {
         variant: 'filled',
         color: 'primary',
-        className: 'bg-primary text-fg-invert hover:bg-primary-5 active:bg-primary-6',
+        className: 'bg-primary-9 text-fg-invert hover:bg-primary-10 active:bg-primary-11',
       },
       {
         variant: ['outline', 'dashed'],
         color: 'primary',
-        className: 'border-primary text-primary hover:bg-primary-1 active:text-primary-6 active:bg-primary-3',
+        className: 'border-primary-8 text-primary-11 hover:bg-primary-3 active:text-primary-11 active:bg-primary-4',
       },
       {
         variant: ['ghost', 'light'],
         color: 'primary',
-        className: 'text-primary active:text-primary-6',
+        className: 'text-primary-11 active:text-primary-11',
       },
       {
         variant: 'subtle',
         color: 'primary',
-        className: 'text-primary hover:bg-primary-1 active:text-primary-6 active:bg-primary-3',
+        className: 'text-primary-11 hover:bg-primary-3 active:text-primary-11 active:bg-primary-4',
       },
       {
         variant: 'soft',
         color: 'primary',
+        className: 'text-primary-11 bg-primary-3 hover:bg-primary-4 active:text-primary-11 active:bg-primary-5',
+      },
+      {
+        variant: 'surface',
+        color: 'primary',
         className:
-          'text-primary bg-primary-1 hover:bg-primary-2 active:text-primary-6 active:bg-primary-3',
+          'bg-primary-2 border-primary-6 text-primary-11 hover:bg-primary-3 hover:border-primary-7 active:bg-primary-4 active:border-primary-8',
       },
       {
         variant: 'filled',
         color: 'destructive',
-        className: 'bg-destructive text-fg-invert hover:bg-destructive-5 active:bg-destructive-6',
+        className: 'bg-destructive-9 text-fg-invert hover:bg-destructive-10 active:bg-destructive-11',
       },
       {
         variant: ['outline', 'dashed'],
         color: 'destructive',
         className:
-          'border-destructive text-destructive hover:bg-destructive-1 active:text-destructive-6 active:bg-destructive-3',
+          'border-destructive-8 text-destructive-11 hover:bg-destructive-3 active:text-destructive-11 active:bg-destructive-4',
       },
       {
         variant: ['ghost', 'light'],
         color: 'destructive',
-        className: 'text-destructive active:text-destructive-6',
+        className: 'text-destructive-11 active:text-destructive-11',
       },
       {
         variant: 'subtle',
         color: 'destructive',
-        className:
-          'text-destructive hover:bg-destructive-1 active:text-destructive-6 active:bg-destructive-3',
+        className: 'text-destructive-11 hover:bg-destructive-3 active:text-destructive-11 active:bg-destructive-4',
       },
       {
         variant: 'soft',
         color: 'destructive',
         className:
-          'text-destructive bg-destructive-1 hover:bg-destructive-2 active:text-destructive-6 active:bg-destructive-3',
+          'text-destructive-11 bg-destructive-3 hover:bg-destructive-4 active:text-destructive-11 active:bg-destructive-5',
+      },
+      {
+        variant: 'surface',
+        color: 'destructive',
+        className:
+          'bg-destructive-2 border-destructive-6 text-destructive-11 hover:bg-destructive-3 hover:border-destructive-7 active:bg-destructive-4 active:border-destructive-8',
       },
       {
         variant: 'filled',
         color: 'warning',
-        className: 'bg-warning text-fg-invert hover:bg-warning-5 active:bg-warning-6',
+        className: 'bg-warning-9 text-fg-invert hover:bg-warning-10 active:bg-warning-11',
       },
       {
         variant: ['outline', 'dashed'],
         color: 'warning',
-        className: 'border-warning text-warning hover:bg-warning-1 active:text-warning-6 active:bg-warning-3',
+        className: 'border-warning-8 text-warning-11 hover:bg-warning-3 active:text-warning-11 active:bg-warning-4',
       },
       {
         variant: ['ghost', 'light'],
         color: 'warning',
-        className: 'text-warning active:text-warning-6',
+        className: 'text-warning-11 active:text-warning-11',
       },
       {
         variant: 'subtle',
         color: 'warning',
-        className: 'text-warning hover:bg-warning-1 active:text-warning-6 active:bg-warning-3',
+        className: 'text-warning-11 hover:bg-warning-3 active:text-warning-11 active:bg-warning-4',
       },
       {
         variant: 'soft',
+        color: 'warning',
+        className: 'text-warning-11 bg-warning-3 hover:bg-warning-4 active:text-warning-11 active:bg-warning-5',
+      },
+      {
+        variant: 'surface',
         color: 'warning',
         className:
-          'text-warning bg-warning-1 hover:bg-warning-2 active:text-warning-6 active:bg-warning-3',
+          'bg-warning-2 border-warning-6 text-warning-11 hover:bg-warning-3 hover:border-warning-7 active:bg-warning-4 active:border-warning-8',
       },
       {
         variant: 'filled',
         color: 'success',
-        className: 'bg-success text-fg-invert hover:bg-success-5 active:bg-success-6',
+        className: 'bg-success-9 text-fg-invert hover:bg-success-10 active:bg-success-11',
       },
       {
         variant: ['outline', 'dashed'],
         color: 'success',
-        className: 'border-success text-success hover:bg-success-1 active:text-success-6 active:bg-success-3',
+        className: 'border-success-8 text-success-11 hover:bg-success-3 active:text-success-11 active:bg-success-4',
       },
       {
         variant: ['ghost', 'light'],
         color: 'success',
-        className: 'text-success active:text-success-6',
+        className: 'text-success-11 active:text-success-11',
       },
       {
         variant: 'subtle',
         color: 'success',
-        className: 'text-success hover:bg-success-1 active:text-success-6 active:bg-success-3',
+        className: 'text-success-11 hover:bg-success-3 active:text-success-11 active:bg-success-4',
       },
       {
         variant: 'soft',
+        color: 'success',
+        className: 'text-success-11 bg-success-3 hover:bg-success-4 active:text-success-11 active:bg-success-5',
+      },
+      {
+        variant: 'surface',
         color: 'success',
         className:
-          'text-success bg-success-1 hover:bg-success-2 active:text-success-6 active:bg-success-3',
+          'bg-success-2 border-success-6 text-success-11 hover:bg-success-3 hover:border-success-7 active:bg-success-4 active:border-success-8',
       },
       {
         variant: 'filled',
         color: 'info',
-        className: 'bg-info text-fg-invert hover:bg-info-5 active:bg-info-6',
+        className: 'bg-info-9 text-fg-invert hover:bg-info-10 active:bg-info-11',
       },
       {
         variant: ['outline', 'dashed'],
         color: 'info',
-        className: 'border-info text-info hover:bg-info-1 active:text-info-6 active:bg-info-3',
+        className: 'border-info-8 text-info-11 hover:bg-info-3 active:text-info-11 active:bg-info-4',
       },
       {
         variant: ['ghost', 'light'],
         color: 'info',
-        className: 'text-info active:text-info-6',
+        className: 'text-info-11 active:text-info-11',
       },
       {
         variant: 'subtle',
         color: 'info',
-        className: 'text-info hover:bg-info-1 active:text-info-6 active:bg-info-3',
+        className: 'text-info-11 hover:bg-info-3 active:text-info-11 active:bg-info-4',
       },
       {
         variant: 'soft',
         color: 'info',
-        className: 'text-info bg-info-1 hover:bg-info-2 active:text-info-6 active:bg-info-3',
+        className: 'text-info-11 bg-info-3 hover:bg-info-4 active:text-info-11 active:bg-info-5',
+      },
+      {
+        variant: 'surface',
+        color: 'info',
+        className:
+          'bg-info-2 border-info-6 text-info-11 hover:bg-info-3 hover:border-info-7 active:bg-info-4 active:border-info-8',
       },
     ],
     defaultVariants: {

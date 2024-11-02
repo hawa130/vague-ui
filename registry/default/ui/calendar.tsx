@@ -43,7 +43,7 @@ function Calendar({ className, classNames, language, showOutsideDays = true, ...
         head_cell: 'text-muted-fg rounded-md w-8 font-normal text-[0.8rem]',
         row: 'flex w-full mt-2',
         cell: cn(
-          'relative p-0 text-center text-sm focus-within:relative focus-within:z-20 [&:has([aria-selected])]:bg-accent [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected].day-range-end)]:rounded-r-md',
+          'relative p-0 text-center text-sm focus-within:relative focus-within:z-20 [&:has([aria-selected])]:bg-accent-light [&:has([aria-selected].day-outside)]:bg-accent-light/50 [&:has([aria-selected].day-range-end)]:rounded-r-md',
           props.mode === 'range'
             ? '[&:has(>.day-range-end)]:rounded-r-md [&:has(>.day-range-start)]:rounded-l-md first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md'
             : '[&:has([aria-selected])]:rounded-md',
@@ -54,12 +54,12 @@ function Calendar({ className, classNames, language, showOutsideDays = true, ...
         ),
         day_range_end: 'day-range-end',
         day_selected:
-          'bg-primary text-fg-invert hover:bg-primary hover:text-fg-invert focus:bg-primary focus:text-fg-invert',
+          'bg-primary-9 text-fg-invert hover:bg-primary-9 hover:text-fg-invert focus:bg-primary-9 focus:text-fg-invert',
         day_today: '[&:not([aria-selected])]:bg-accent [&:not([aria-selected])]:text-accent-fg',
         day_outside:
-          'day-outside text-muted-fg opacity-50 aria-selected:bg-accent/50 aria-selected:text-muted-fg aria-selected:opacity-30',
+          'day-outside text-muted-fg opacity-50 aria-selected:bg-accent-light/50 aria-selected:text-muted-fg aria-selected:opacity-30',
         day_disabled: '[&:not([aria-selected])]:text-muted-fg [&:not([aria-selected])]:opacity-50',
-        day_range_middle: 'aria-selected:bg-accent aria-selected:text-accent-fg',
+        day_range_middle: 'aria-selected:bg-accent-light aria-selected:text-accent-fg',
         day_hidden: 'invisible',
         ...classNames,
       }}

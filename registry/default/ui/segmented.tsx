@@ -38,7 +38,7 @@ export const SegmentedItem = React.forwardRef<
     <RadioGroupPrimitive.Item
       ref={ref}
       className={cn(
-        'focus-visible:ring-ring-focus data-[state=checked]:bg-segment-active data-[state=checked]:text-segment-active-fg not-first:before:data-[state=unchecked]:border-l hover:data-[state=unchecked]:text-accent-fg active:data-[state=unchecked]:bg-accent-dark relative inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-all before:absolute before:-left-[0.5px] before:h-5 before:transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-0 disabled:pointer-events-none disabled:opacity-50 data-[state=checked]:z-[1] data-[state=checked]:shadow hover:data-[state=unchecked]:bg-accent before:[&+input+button]:data-[state=checked]:border-l-transparent',
+        'relative inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-all before:absolute before:-left-[0.5px] before:h-5 before:border-gray-5 before:transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring-focus focus-visible:ring-offset-0 disabled:pointer-events-none disabled:opacity-50 data-[state=checked]:z-[1] data-[state=checked]:bg-segment-active data-[state=checked]:text-segment-active-fg data-[state=checked]:shadow hover:data-[state=unchecked]:bg-accent hover:data-[state=unchecked]:text-accent-fg active:data-[state=unchecked]:bg-accent-dark before:[&+input+button]:data-[state=checked]:border-l-transparent [&:not(:first-child)]:before:data-[state=unchecked]:border-l',
         className,
       )}
       {...props}
