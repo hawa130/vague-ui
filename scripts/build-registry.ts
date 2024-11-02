@@ -16,6 +16,7 @@ import {
   registryItemTypeSchema,
   registrySchema,
 } from '@/registry/schema'
+import { buildColorsData } from '@/registry/registry-themes'
 
 const REGISTRY_PATH = path.join(process.cwd(), 'public/registry')
 
@@ -274,31 +275,7 @@ async function buildThemes() {
     await fs.mkdir(colorsTargetPath, { recursive: true })
   }
 
-  const colorsData: Record<string, any> = {}
-  for (const [color, value] of Object.entries(colors)) {
-    if (typeof value === 'string') {
-      colorsData[color] = value
-      continue
-    }
-
-    if (Array.isArray(value)) {
-      colorsData[color] = value.map((item) => ({
-        ...item,
-        rgbChannel: item.rgb.replace(/^rgb\((\d+),(\d+),(\d+)\)$/, '$1 $2 $3'),
-        hslChannel: item.hsl.replace(/^hsl\(([\d.]+),([\d.]+%),([\d.]+%)\)$/, '$1 $2 $3'),
-      }))
-      continue
-    }
-
-    if (typeof value === 'object') {
-      colorsData[color] = {
-        ...value,
-        rgbChannel: value.rgb.replace(/^rgb\((\d+),(\d+),(\d+)\)$/, '$1 $2 $3'),
-        hslChannel: value.hsl.replace(/^hsl\(([\d.]+),([\d.]+%),([\d.]+%)\)$/, '$1 $2 $3'),
-      }
-      continue
-    }
-  }
+  const colorsData = buildColorsData(colors) as Record<string, any>
 
   await fs.writeFile(
     path.join(colorsTargetPath, 'index.json'),

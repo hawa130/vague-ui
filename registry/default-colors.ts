@@ -1,3 +1,5 @@
+import { ColorMapping, Colors } from './types'
+
 export const colors = {
   inherit: 'inherit',
   current: 'currentColor',
@@ -1508,62 +1510,7 @@ export const colors = {
       hsl: 'hsl(343.1,87.7%,15.9%)',
     },
   ],
-}
-
-// export const colorMapping = {
-//   light: {
-//     background: 'white',
-//     foreground: '{{base}}-950',
-//     card: 'white',
-//     'card-fg': '{{base}}-950',
-//     popover: 'white',
-//     'popover-fg': '{{base}}-950',
-//     primary: '{{base}}-900',
-//     'primary-fg': '{{base}}-50',
-//     secondary: '{{base}}-100',
-//     'secondary-fg': '{{base}}-900',
-//     muted: '{{base}}-100',
-//     'muted-fg': '{{base}}-500',
-//     accent: '{{base}}-100',
-//     'accent-fg': '{{base}}-900',
-//     destructive: 'red-500',
-//     'destructive-fg': '{{base}}-50',
-//     border: '{{base}}-200',
-//     input: '{{base}}-200',
-//     ring: '{{base}}-950',
-//     'chart-1': '12 76% 61%',
-//     'chart-2': '173 58% 39%',
-//     'chart-3': '197 37% 24%',
-//     'chart-4': '43 74% 66%',
-//     'chart-5': '27 87% 67%',
-//   },
-//   dark: {
-//     background: '{{base}}-950',
-//     foreground: '{{base}}-50',
-//     card: '{{base}}-950',
-//     'card-fg': '{{base}}-50',
-//     popover: '{{base}}-950',
-//     'popover-fg': '{{base}}-50',
-//     primary: '{{base}}-50',
-//     'primary-fg': '{{base}}-900',
-//     secondary: '{{base}}-800',
-//     'secondary-fg': '{{base}}-50',
-//     muted: '{{base}}-800',
-//     'muted-fg': '{{base}}-400',
-//     accent: '{{base}}-800',
-//     'accent-fg': '{{base}}-50',
-//     destructive: 'red-900',
-//     'destructive-fg': '{{base}}-50',
-//     border: '{{base}}-800',
-//     input: '{{base}}-800',
-//     ring: '{{base}}-300',
-//     'chart-1': '220 70% 50%',
-//     'chart-2': '160 60% 45%',
-//     'chart-3': '30 80% 55%',
-//     'chart-4': '280 65% 60%',
-//     'chart-5': '340 75% 55%',
-//   },
-// } as const
+} satisfies Colors
 
 export const colorMapping = {
   light: {
@@ -1688,4 +1635,4 @@ export const colorMapping = {
     'chart-4': '43 74% 66%',
     'chart-5': '27 87% 67%',
   },
-} as const
+} satisfies ColorMapping
