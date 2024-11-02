@@ -26,9 +26,9 @@ export const tabsTriggerVariants = cva(
       variant: {
         default:
           'text-segment-fg py-1 rounded-md font-medium ring-offset-background focus-visible:ring-2 focus-visible:ring-ring-focus focus-visible:ring-offset-2 data-[state=active]:bg-segment-active data-[state=active]:text-segment-active-fg data-[state=active]:shadow hover:data-[state=inactive]:bg-accent hover:data-[state=inactive]:text-accent-fg',
-        line: 'text-foreground/70 pt-1.5 pb-3 rounded-md relative z-0 data-[state=active]:font-medium hover:text-accent-fg data-[state=active]:text-primary before:z-[-1] before:absolute before:inset-x-0 before:top-0 before:bottom-1.5 before:rounded-md before:transition-colors hover:before:bg-accent hover:data-[state=active]:before:bg-primary-light data-[state=active]:after:absolute data-[state=active]:after:h-[3px] data-[state=active]:after:bg-primary data-[state=active]:after:bottom-0 data-[state=active]:after:inset-x-3 data-[state=active]:after:rounded-full focus-visible:before:ring-2 focus-visible:before:ring-ring',
+        line: 'text-foreground/70 pt-1.5 pb-3 rounded-md relative z-0 data-[state=active]:font-medium hover:text-accent-fg data-[state=active]:text-primary before:z-[-1] before:absolute before:inset-x-0 before:top-0 before:bottom-1.5 before:rounded-md before:transition-colors hover:before:bg-accent hover:data-[state=active]:before:bg-primary-1 data-[state=active]:after:absolute data-[state=active]:after:h-[3px] data-[state=active]:after:bg-primary data-[state=active]:after:bottom-0 data-[state=active]:after:inset-x-3 data-[state=active]:after:rounded-full focus-visible:before:ring-2 focus-visible:before:ring-ring',
         button:
-          'h-9 px-3 rounded-md text-foreground/70 data-[state=active]:font-medium data-[state=active]:text-primary data-[state=active]:bg-primary-light hover:data-[state=inactive]:bg-accent hover:data-[state=inactive]:text-accent-fg',
+          'h-9 px-3 rounded-md text-foreground/70 data-[state=active]:font-medium data-[state=active]:text-primary data-[state=active]:bg-primary-1 hover:data-[state=inactive]:bg-accent hover:data-[state=inactive]:text-accent-fg',
       },
     },
     defaultVariants: {

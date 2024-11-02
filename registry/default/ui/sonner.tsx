@@ -18,17 +18,17 @@ const Toaster = ({ ...props }: ToasterProps) => {
       className="toaster group"
       toastOptions={{
         style: {
-          '--error-bg': 'hsl(var(--destructive-light))',
-          '--error-border': 'hsl(var(--destructive-pale))',
+          '--error-bg': 'hsl(var(--destructive-1))',
+          '--error-border': 'hsl(var(--destructive-3))',
           '--error-text': 'hsl(var(--destructive))',
-          '--warning-bg': 'hsl(var(--warning-light))',
-          '--warning-border': 'hsl(var(--warning-pale))',
+          '--warning-bg': 'hsl(var(--warning-1))',
+          '--warning-border': 'hsl(var(--warning-3))',
           '--warning-text': 'hsl(var(--warning))',
-          '--success-bg': 'hsl(var(--success-light))',
-          '--success-border': 'hsl(var(--success-pale))',
+          '--success-bg': 'hsl(var(--success-1))',
+          '--success-border': 'hsl(var(--success-3))',
           '--success-text': 'hsl(var(--success))',
-          '--info-bg': 'hsl(var(--info-light))',
-          '--info-border': 'hsl(var(--info-pale))',
+          '--info-bg': 'hsl(var(--info-1))',
+          '--info-border': 'hsl(var(--info-3))',
           '--info-text': 'hsl(var(--info))',
         } as CSSProperties,
         classNames: {
@@ -38,10 +38,10 @@ const Toaster = ({ ...props }: ToasterProps) => {
           actionButton:
             'group-[.toast]:bg-secondary group-[.toast]:text-secondary-fg group-[.toast]:font-medium hover:group-[.toast]:bg-accent hover:group-[.toast]:text-accent-fg active:group-[.toast]:bg-accent-dark',
           cancelButton: 'group-[.toast]:bg-muted group-[.toast]:text-muted-fg',
-          error: 'group-[.toaster]:shadow-destructive-pale/60',
-          warning: 'group-[.toaster]:shadow-warning-pale/60',
-          success: 'group-[.toaster]:shadow-success-pale/60',
-          info: 'group-[.toaster]:shadow-info-pale/60',
+          error: 'group-[.toaster]:shadow-destructive-3/60',
+          warning: 'group-[.toaster]:shadow-warning-3/60',
+          success: 'group-[.toaster]:shadow-success-3/60',
+          info: 'group-[.toaster]:shadow-info-3/60',
           closeButton: 'opacity-0 group-hover:opacity-100',
         },
       }}

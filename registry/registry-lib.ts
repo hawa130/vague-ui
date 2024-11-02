@@ -12,4 +12,14 @@ export const lib: Registry = [
       },
     ],
   },
+  {
+    name: 'tailwindcss-join',
+    type: 'registry:lib',
+    files: [
+      {
+        path: 'lib/tailwindcss-join.ts',
+        type: 'registry:lib',
+      },
+    ],
+  }
 ]

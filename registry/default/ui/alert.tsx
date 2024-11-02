@@ -41,12 +41,12 @@ const alertVariants = cva(
       {
         variant: 'surface',
         color: 'primary',
-        className: 'border-primary-pale bg-primary-light text-primary [&>i]:text-primary',
+        className: 'border-primary-3 bg-primary-1 text-primary [&>i]:text-primary',
       },
       {
         variant: 'soft',
         color: 'primary',
-        className: 'bg-primary-light text-primary [&>i]:text-primary',
+        className: 'bg-primary-1 text-primary [&>i]:text-primary',
       },
       {
         variant: 'outline',
@@ -56,12 +56,12 @@ const alertVariants = cva(
       {
         variant: 'surface',
         color: 'destructive',
-        className: 'border-destructive-pale bg-destructive-light text-destructive [&>i]:text-destructive',
+        className: 'border-destructive-3 bg-destructive-1 text-destructive [&>i]:text-destructive',
       },
       {
         variant: 'soft',
         color: 'destructive',
-        className: 'bg-destructive-light text-destructive [&>i]:text-destructive',
+        className: 'bg-destructive-1 text-destructive [&>i]:text-destructive',
       },
       {
         variant: 'outline',
@@ -71,12 +71,12 @@ const alertVariants = cva(
       {
         variant: 'surface',
         color: 'warning',
-        className: 'border-warning-pale bg-warning-light text-warning [&>i]:text-warning',
+        className: 'border-warning-3 bg-warning-1 text-warning [&>i]:text-warning',
       },
       {
         variant: 'soft',
         color: 'warning',
-        className: 'bg-warning-light text-warning [&>i]:text-warning',
+        className: 'bg-warning-1 text-warning [&>i]:text-warning',
       },
       {
         variant: 'outline',
@@ -86,12 +86,12 @@ const alertVariants = cva(
       {
         variant: 'surface',
         color: 'success',
-        className: 'border-success-pale bg-success-light text-success [&>i]:text-success',
+        className: 'border-success-3 bg-success-1 text-success [&>i]:text-success',
       },
       {
         variant: 'soft',
         color: 'success',
-        className: 'bg-success-light text-success [&>i]:text-success',
+        className: 'bg-success-1 text-success [&>i]:text-success',
       },
       {
         variant: 'outline',
@@ -101,12 +101,12 @@ const alertVariants = cva(
       {
         variant: 'surface',
         color: 'info',
-        className: 'border-info-pale bg-info-light text-info [&>i]:text-info',
+        className: 'border-info-3 bg-info-1 text-info [&>i]:text-info',
       },
       {
         variant: 'soft',
         color: 'info',
-        className: 'bg-info-light text-info [&>i]:text-info',
+        className: 'bg-info-1 text-info [&>i]:text-info',
       },
     ],
     defaultVariants: {

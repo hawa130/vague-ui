@@ -605,6 +605,18 @@ export const Index: Record<string, any> = {
       subcategory: '',
       chunks: []
     },
+    'tailwindcss-join': {
+      name: 'tailwindcss-join',
+      description: '',
+      type: 'registry:lib',
+      registryDependencies: [],
+      files: ['registry/default/lib/tailwindcss-join.ts'],
+      component: React.lazy(() => import('@/registry/default/lib/tailwindcss-join.ts')),
+      source: '',
+      category: '',
+      subcategory: '',
+      chunks: []
+    },
     'use-mobile': {
       name: 'use-mobile',
       description: '',
@@ -1213,6 +1225,18 @@ export const Index: Record<string, any> = {
       registryDependencies: [],
       files: ['registry/new-york/lib/utils.ts'],
       component: React.lazy(() => import('@/registry/new-york/lib/utils.ts')),
+      source: '',
+      category: '',
+      subcategory: '',
+      chunks: []
+    },
+    'tailwindcss-join': {
+      name: 'tailwindcss-join',
+      description: '',
+      type: 'registry:lib',
+      registryDependencies: [],
+      files: ['registry/new-york/lib/tailwindcss-join.ts'],
+      component: React.lazy(() => import('@/registry/new-york/lib/tailwindcss-join.ts')),
       source: '',
       category: '',
       subcategory: '',

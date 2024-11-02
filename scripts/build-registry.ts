@@ -239,16 +239,20 @@ async function buildStylesIndex() {
   for (const style of styles) {
     const targetPath = path.join(REGISTRY_PATH, 'styles', style.name)
 
-    const dependencies = ['tailwindcss-animate', 'class-variance-authority', 'lucide-react']
+    const dependencies = ['tailwindcss-animate', 'tailwindcss-radix-colors', 'class-variance-authority', 'lucide-react']
 
     const payload: RegistryEntry = {
       name: style.name,
       type: 'registry:style',
       dependencies,
-      registryDependencies: ['utils'],
+      registryDependencies: ['utils', 'tailwindcss-join'],
       tailwind: {
         config: {
-          plugins: [`require('tailwindcss-animate')`],
+          plugins: [
+            `require('tailwindcss-animate')`,
+            `require('tailwindcss-radix-colors')`,
+            `require('./lib/tailwindcss-join')`,
+          ],
         },
       },
       cssVars: {},
@@ -319,26 +323,76 @@ async function buildThemes() {
 
 @layer base {
   :root {
-    --background: <%- colors.light['background'] %>;
-    --foreground: <%- colors.light['foreground'] %>;
-    --card: <%- colors.light['card'] %>;
+    --background: <%- colors.light.background %>;
+    --foreground: <%- colors.light.foreground %>;
+    --fg-invert: <%- colors.light['fg-invert'] %>;
+
+    --card: <%- colors.light.card %>;
     --card-fg: <%- colors.light['card-fg'] %>;
-    --popover: <%- colors.light['popover'] %>;
+
+    --popover: <%- colors.light.popover %>;
     --popover-fg: <%- colors.light['popover-fg'] %>;
-    --primary: <%- colors.light['primary'] %>;
-    --primary-fg: <%- colors.light['primary-fg'] %>;
-    --secondary: <%- colors.light['secondary'] %>;
+
+    --secondary: <%- colors.light.secondary %>;
     --secondary-fg: <%- colors.light['secondary-fg'] %>;
-    --muted: <%- colors.light['muted'] %>;
+
+    --muted: <%- colors.light.muted %>;
     --muted-fg: <%- colors.light['muted-fg'] %>;
-    --accent: <%- colors.light['accent'] %>;
+
+    --segment: <%- colors.light.segment %>;
+    --segment-fg: <%- colors.light['segment-fg'] %>;
+    --segment-active: <%- colors.light['segment-active'] %>;
+    --segment-active-fg: <%- colors.light['segment-active-fg'] %>;
+
+    --accent: <%- colors.light.accent %>;
+    --accent-dark: <%- colors.light['accent-dark'] %>;
     --accent-fg: <%- colors.light['accent-fg'] %>;
-    --destructive: <%- colors.light['destructive'] %>;
-    --destructive-fg: <%- colors.light['destructive-fg'] %>;
-    --border: <%- colors.light['border'] %>;
-    --input: <%- colors.light['input'] %>;
-    --ring: <%- colors.light['ring'] %>;
+
+    --primary-1: <%- colors.light['primary-1'] %>;
+    --primary-2: <%- colors.light['primary-2'] %>;
+    --primary-3: <%- colors.light['primary-3'] %>;
+    --primary: <%- colors.light.primary %>;
+    --primary-5: <%- colors.light['primary-5'] %>;
+    --primary-6: <%- colors.light['primary-6'] %>;
+
+    --destructive-1: <%- colors.light['destructive-1'] %>;
+    --destructive-2: <%- colors.light['destructive-2'] %>;
+    --destructive-3: <%- colors.light['destructive-3'] %>;
+    --destructive: <%- colors.light.destructive %>;
+    --destructive-5: <%- colors.light['destructive-5'] %>;
+    --destructive-6: <%- colors.light['destructive-6'] %>;
+
+    --warning-1: <%- colors.light['warning-1'] %>;
+    --warning-2: <%- colors.light['warning-2'] %>;
+    --warning-3: <%- colors.light['warning-3'] %>;
+    --warning: <%- colors.light.warning %>;
+    --warning-5: <%- colors.light['warning-5'] %>;
+    --warning-6: <%- colors.light['warning-6'] %>;
+
+    --success-1: <%- colors.light['success-1'] %>;
+    --success-2: <%- colors.light['success-2'] %>;
+    --success-3: <%- colors.light['success-3'] %>;
+    --success: <%- colors.light.success %>;
+    --success-5: <%- colors.light['success-5'] %>;
+    --success-6: <%- colors.light['success-6'] %>;
+
+    --info-1: <%- colors.light['info-1'] %>;
+    --info-2: <%- colors.light['info-2'] %>;
+    --info-3: <%- colors.light['info-3'] %>;
+    --info: <%- colors.light.info %>;
+    --info-5: <%- colors.light['info-5'] %>;
+    --info-6: <%- colors.light['info-6'] %>;
+
+    --body: <%- colors.light.body %>;
+    --button: <%- colors.light.button %>;
+    --border: <%- colors.light.border %>;
+    --input: <%- colors.light.input %>;
+
+    --ring-accent: <%- colors.light['ring-accent'] %>;
+    --ring-focus: <%- colors.light['ring-focus'] %>;
+    
     --radius: 0.5rem;
+
     --chart-1: <%- colors.light['chart-1'] %>;
     --chart-2: <%- colors.light['chart-2'] %>;
     --chart-3: <%- colors.light['chart-3'] %>;
@@ -347,25 +401,74 @@ async function buildThemes() {
   }
 
   .dark {
-    --background: <%- colors.dark['background'] %>;
-    --foreground: <%- colors.dark['foreground'] %>;
-    --card: <%- colors.dark['card'] %>;
+    --background: <%- colors.dark.background %>;
+    --foreground: <%- colors.dark.foreground %>;
+    --fg-invert: <%- colors.dark['fg-invert'] %>;
+
+    --card: <%- colors.dark.card %>;
     --card-fg: <%- colors.dark['card-fg'] %>;
-    --popover: <%- colors.dark['popover'] %>;
+
+    --popover: <%- colors.dark.popover %>;
     --popover-fg: <%- colors.dark['popover-fg'] %>;
-    --primary: <%- colors.dark['primary'] %>;
-    --primary-fg: <%- colors.dark['primary-fg'] %>;
-    --secondary: <%- colors.dark['secondary'] %>;
+
+    --secondary: <%- colors.dark.secondary %>;
     --secondary-fg: <%- colors.dark['secondary-fg'] %>;
-    --muted: <%- colors.dark['muted'] %>;
+
+    --muted: <%- colors.dark.muted %>;
     --muted-fg: <%- colors.dark['muted-fg'] %>;
-    --accent: <%- colors.dark['accent'] %>;
+
+    --segment: <%- colors.dark.segment %>;
+    --segment-fg: <%- colors.dark['segment-fg'] %>;
+    --segment-active: <%- colors.dark['segment-active'] %>;
+    --segment-active-fg: <%- colors.dark['segment-active-fg'] %>;
+
+    --accent: <%- colors.dark.accent %>;
+    --accent-dark: <%- colors.dark['accent-dark'] %>;
     --accent-fg: <%- colors.dark['accent-fg'] %>;
-    --destructive: <%- colors.dark['destructive'] %>;
-    --destructive-fg: <%- colors.dark['destructive-fg'] %>;
-    --border: <%- colors.dark['border'] %>;
-    --input: <%- colors.dark['input'] %>;
-    --ring: <%- colors.dark['ring'] %>;
+
+    --primary-1: <%- colors.dark['primary-1'] %>;
+    --primary-2: <%- colors.dark['primary-2'] %>;
+    --primary-3: <%- colors.dark['primary-3'] %>;
+    --primary: <%- colors.dark.primary %>;
+    --primary-5: <%- colors.dark['primary-5'] %>;
+    --primary-6: <%- colors.dark['primary-6'] %>;
+
+    --destructive-1: <%- colors.dark['destructive-1'] %>;
+    --destructive-2: <%- colors.dark['destructive-2'] %>;
+    --destructive-3: <%- colors.dark['destructive-3'] %>;
+    --destructive: <%- colors.dark.destructive %>;
+    --destructive-5: <%- colors.dark['destructive-5'] %>;
+    --destructive-6: <%- colors.dark['destructive-6'] %>;
+
+    --warning-1: <%- colors.dark['warning-1'] %>;
+    --warning-2: <%- colors.dark['warning-2'] %>;
+    --warning-3: <%- colors.dark['warning-3'] %>;
+    --warning: <%- colors.dark.warning %>;
+    --warning-5: <%- colors.dark['warning-5'] %>;
+    --warning-6: <%- colors.dark['warning-6'] %>;
+
+    --success-1: <%- colors.dark['success-1'] %>;
+    --success-2: <%- colors.dark['success-2'] %>;
+    --success-3: <%- colors.dark['success-3'] %>;
+    --success: <%- colors.dark.success %>;
+    --success-5: <%- colors.dark['success-5'] %>;
+    --success-6: <%- colors.dark['success-6'] %>;
+
+    --info-1: <%- colors.dark['info-1'] %>;
+    --info-2: <%- colors.dark['info-2'] %>;
+    --info-3: <%- colors.dark['info-3'] %>;
+    --info: <%- colors.dark.info %>;
+    --info-5: <%- colors.dark['info-5'] %>;
+    --info-6: <%- colors.dark['info-6'] %>;
+
+    --body: <%- colors.dark.body %>;
+    --button: <%- colors.dark.button %>;
+    --border: <%- colors.dark.border %>;
+    --input: <%- colors.dark.input %>;
+
+    --ring-accent: <%- colors.dark['ring-accent'] %>;
+    --ring-focus: <%- colors.dark['ring-focus'] %>;
+
     --chart-1: <%- colors.dark['chart-1'] %>;
     --chart-2: <%- colors.dark['chart-2'] %>;
     --chart-3: <%- colors.dark['chart-3'] %>;
@@ -376,8 +479,13 @@ async function buildThemes() {
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border ring-offset-background;
   }
+  
+  :focus-visible {
+    @apply outline-ring-accent/60 outline-offset-0 outline-2;
+  }
+  
   body {
     @apply bg-background text-foreground;
   }
@@ -394,7 +502,7 @@ async function buildThemes() {
       for (const [key, value] of Object.entries(values)) {
         if (typeof value === 'string') {
           // Chart colors do not have a 1-to-1 mapping with tailwind colors.
-          if (key.startsWith('chart-')) {
+          if (key.startsWith('chart-') || value.match(/^\d{1,3}\s+\d{1,3}(?:\.\d+)?%\s+\d{1,3}(?:\.\d+)?%$/)) {
             base['cssVars'][mode][key] = value
             continue
           }

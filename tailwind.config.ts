@@ -1,7 +1,7 @@
 import type { Config } from 'tailwindcss'
 import tailwindAnimate from 'tailwindcss-animate'
 import tailwindcssRadixColors from 'tailwindcss-radix-colors'
-import plugin from 'tailwindcss/plugin'
+import tailwindcssJoin from './lib/tailwindcss-join'
 
 const config: Config = {
   darkMode: ['class'],
@@ -41,44 +41,44 @@ const config: Config = {
           fg: 'hsl(var(--accent-fg))',
         },
         primary: {
-          light: 'hsl(var(--primary-light))',
-          soft: 'hsl(var(--primary-soft))',
-          pale: 'hsl(var(--primary-pale))',
+          '1': 'hsl(var(--primary-1))',
+          '2': 'hsl(var(--primary-2))',
+          '3': 'hsl(var(--primary-3))',
           DEFAULT: 'hsl(var(--primary))',
-          deep: 'hsl(var(--primary-deep))',
-          dark: 'hsl(var(--primary-dark))',
+          '5': 'hsl(var(--primary-5))',
+          '6': 'hsl(var(--primary-6))',
         },
         destructive: {
-          light: 'hsl(var(--destructive-light))',
-          soft: 'hsl(var(--destructive-soft))',
-          pale: 'hsl(var(--destructive-pale))',
+          '1': 'hsl(var(--destructive-1))',
+          '2': 'hsl(var(--destructive-2))',
+          '3': 'hsl(var(--destructive-3))',
           DEFAULT: 'hsl(var(--destructive))',
-          deep: 'hsl(var(--destructive-deep))',
-          dark: 'hsl(var(--destructive-dark))',
+          '5': 'hsl(var(--destructive-5))',
+          '6': 'hsl(var(--destructive-6))',
         },
         warning: {
-          light: 'hsl(var(--warning-light))',
-          soft: 'hsl(var(--warning-soft))',
-          pale: 'hsl(var(--warning-pale))',
+          '1': 'hsl(var(--warning-1))',
+          '2': 'hsl(var(--warning-2))',
+          '3': 'hsl(var(--warning-3))',
           DEFAULT: 'hsl(var(--warning))',
-          deep: 'hsl(var(--warning-deep))',
-          dark: 'hsl(var(--warning-dark))',
+          '5': 'hsl(var(--warning-5))',
+          '6': 'hsl(var(--warning-6))',
         },
         success: {
-          light: 'hsl(var(--success-light))',
-          soft: 'hsl(var(--success-soft))',
-          pale: 'hsl(var(--success-pale))',
+          '1': 'hsl(var(--success-1))',
+          '2': 'hsl(var(--success-2))',
+          '3': 'hsl(var(--success-3))',
           DEFAULT: 'hsl(var(--success))',
-          deep: 'hsl(var(--success-deep))',
-          dark: 'hsl(var(--success-dark))',
+          '5': 'hsl(var(--success-5))',
+          '6': 'hsl(var(--success-6))',
         },
         info: {
-          light: 'hsl(var(--info-light))',
-          soft: 'hsl(var(--info-soft))',
-          pale: 'hsl(var(--info-pale))',
+          '1': 'hsl(var(--info-1))',
+          '2': 'hsl(var(--info-2))',
+          '3': 'hsl(var(--info-3))',
           DEFAULT: 'hsl(var(--info))',
-          deep: 'hsl(var(--info-deep))',
-          dark: 'hsl(var(--info-dark))',
+          '5': 'hsl(var(--info-5))',
+          '6': 'hsl(var(--info-6))',
         },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -175,50 +175,7 @@ const config: Config = {
   plugins: [
     tailwindAnimate,
     tailwindcssRadixColors,
-    plugin(({ addComponents }) => {
-      addComponents({
-        '.join': {
-          '> :first-child:not(:last-child)': {
-            borderTopRightRadius: '0',
-            borderBottomRightRadius: '0',
-          },
-          '> :last-child:not(:first-child)': {
-            borderTopLeftRadius: '0',
-            borderBottomLeftRadius: '0',
-          },
-          '> :not(:first-child):not(:last-child)': {
-            borderRadius: '0',
-          },
-          '> :where(*:not(:first-child))': {
-            marginLeft: '-1px',
-          },
-          '> *:focus, > *:focus-within': {
-            position: 'relative',
-            zIndex: '2',
-          },
-          '> *:hover': {
-            position: 'relative',
-            zIndex: '1',
-          },
-        },
-        '.join-vertical': {
-          '> :first-child:not(:last-child)': {
-            borderBottomLeftRadius: '0',
-            borderBottomRightRadius: '0',
-          },
-          '> :last-child:not(:first-child)': {
-            borderTopLeftRadius: '0',
-            borderTopRightRadius: '0',
-          },
-          '> :not(:first-child):not(:last-child)': {
-            borderRadius: '0',
-          },
-          '> :where(*:not(:first-child))': {
-            marginTop: '-1px',
-          },
-        },
-      })
-    }),
+    tailwindcssJoin,
   ],
 }
 export default config

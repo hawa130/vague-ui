@@ -1,0 +1,11 @@
+{
+  "name": "tailwindcss-join",
+  "type": "registry:lib",
+  "files": [
+    {
+      "path": "lib/tailwindcss-join.ts",
+      "content": "import plugin from 'tailwindcss/plugin'\n\nexport default plugin(({ addComponents }) => {\n  addComponents({\n    '.join': {\n      '> :first-child:not(:last-child)': {\n        borderTopRightRadius: '0',\n        borderBottomRightRadius: '0',\n      },\n      '> :last-child:not(:first-child)': {\n        borderTopLeftRadius: '0',\n        borderBottomLeftRadius: '0',\n      },\n      '> :not(:first-child):not(:last-child)': {\n        borderRadius: '0',\n      },\n      '> :where(*:not(:first-child))': {\n        marginLeft: '-1px',\n      },\n      '> *:focus, > *:focus-within': {\n        position: 'relative',\n        zIndex: '2',\n      },\n      '> *:hover': {\n        position: 'relative',\n        zIndex: '1',\n      },\n    },\n    '.join-vertical': {\n      '> :first-child:not(:last-child)': {\n        borderBottomLeftRadius: '0',\n        borderBottomRightRadius: '0',\n      },\n      '> :last-child:not(:first-child)': {\n        borderTopLeftRadius: '0',\n        borderTopRightRadius: '0',\n      },\n      '> :not(:first-child):not(:last-child)': {\n        borderRadius: '0',\n      },\n      '> :where(*:not(:first-child))': {\n        marginTop: '-1px',\n      },\n    },\n  })\n})\n",
+      "type": "registry:lib"
+    }
+  ]
+}

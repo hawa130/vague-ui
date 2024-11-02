@@ -79,11 +79,11 @@ export const menuItemVariants = cva(
     variants: {
       variant: {
         default: 'focus:bg-accent focus:text-accent-fg',
-        primary: 'focus:bg-primary-light focus:text-primary',
-        destructive: 'focus:bg-destructive-light focus:text-destructive',
-        warning: 'focus:bg-warning-light focus:text-warning',
-        success: 'focus:bg-success-light focus:text-success',
-        info: 'focus:bg-info-light focus:text-info',
+        primary: 'focus:bg-primary-1 focus:text-primary',
+        destructive: 'focus:bg-destructive-1 focus:text-destructive',
+        warning: 'focus:bg-warning-1 focus:text-warning',
+        success: 'focus:bg-success-1 focus:text-success',
+        info: 'focus:bg-info-1 focus:text-info',
       },
     },
     defaultVariants: {
