@@ -51,7 +51,8 @@ function transformTheme(mapping: ColorMapping, colors: Colors) {
   }
   for (const [mode, values] of Object.entries(mapping)) {
     for (const [key, value] of Object.entries(values)) {
-      if (value.match(/^\d{1,3}\s+\d{1,3}(?:\.\d+)?%\s+\d{1,3}(?:\.\d+)?%$/)) {
+      // hsl literal
+      if (value.match(/^([\d.]+)\s+([\d.]+%)\s+([\d.]+%)$/)) {
         cssVars[mode][key] = value
         continue
       }
