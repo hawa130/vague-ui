@@ -68,7 +68,7 @@ const buttonVariants = cva(
         variant: 'surface',
         color: 'default',
         className:
-          'bg-gray-2 border-gray-6 text-gray-12 hover:bg-gray-3 hover:border-gray-7 active:bg-gray-4 active:border-gray-8',
+          'bg-neutral-2 border-neutral-6 text-neutral-12 hover:bg-neutral-3 hover:border-neutral-7 active:bg-neutral-4 active:border-neutral-8',
       },
       {
         variant: 'filled',

@@ -378,24 +378,6 @@ export const ui: Registry = [
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-radio-group'],
     files: ['ui/segmented.tsx'],
-    tailwind: {
-      config: {
-        theme: {
-          extend: {
-            colors: {
-              segment: {
-                DEFAULT: 'hsl(var(--segment))',
-                fg: 'hsl(var(--segment-fg))',
-                active: {
-                  DEFAULT: 'hsl(var(--segment-active))',
-                  fg: 'hsl(var(--segment-active-fg))',
-                },
-              },
-            },
-          },
-        },
-      },
-    },
   },
   {
     name: 'spinner',

@@ -13,7 +13,7 @@ const badgeVariants = cva(
         surface: 'border',
         dashed: 'border border-dashed',
         soft: 'border border-transparent',
-        dot: 'border border-gray-8 text-foreground before:rounded-full before:size-[.625em]',
+        dot: 'border border-neutral-8 text-foreground before:rounded-full before:size-[.625em]',
       },
       color: {
         default: '',
@@ -45,12 +45,12 @@ const badgeVariants = cva(
       {
         variant: 'surface',
         color: 'default',
-        className: 'bg-gray-2 text-gray-12 border-gray-6',
+        className: 'bg-neutral-2 text-neutral-12 border-neutral-6',
       },
       {
         variant: ['outline', 'dashed'],
         color: 'default',
-        className: 'text-foreground border-gray-8',
+        className: 'text-foreground border-neutral-8',
       },
       {
         variant: 'filled',

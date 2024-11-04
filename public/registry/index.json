@@ -752,25 +752,7 @@
         "path": "ui/segmented.tsx",
         "type": "registry:ui"
       }
-    ],
-    "tailwind": {
-      "config": {
-        "theme": {
-          "extend": {
-            "colors": {
-              "segment": {
-                "DEFAULT": "hsl(var(--segment))",
-                "fg": "hsl(var(--segment-fg))",
-                "active": {
-                  "DEFAULT": "hsl(var(--segment-active))",
-                  "fg": "hsl(var(--segment-active-fg))"
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+    ]
   },
   {
     "name": "spinner",

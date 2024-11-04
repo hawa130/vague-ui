@@ -151,19 +151,19 @@ const config: Config = {
           '6-legacy': 'hsl(var(--info-6-legacy))',
           fg: 'hsl(var(--info-fg))'
         },
-        gray: {
-          '1': 'hsl(var(--gray-1))',
-          '2': 'hsl(var(--gray-2))',
-          '3': 'hsl(var(--gray-3))',
-          '4': 'hsl(var(--gray-4))',
-          '5': 'hsl(var(--gray-5))',
-          '6': 'hsl(var(--gray-6))',
-          '7': 'hsl(var(--gray-7))',
-          '8': 'hsl(var(--gray-8))',
-          '9': 'hsl(var(--gray-9))',
-          '10': 'hsl(var(--gray-10))',
-          '11': 'hsl(var(--gray-11))',
-          '12': 'hsl(var(--gray-12))'
+        neutral: {
+          '1': 'hsl(var(--neutral-1))',
+          '2': 'hsl(var(--neutral-2))',
+          '3': 'hsl(var(--neutral-3))',
+          '4': 'hsl(var(--neutral-4))',
+          '5': 'hsl(var(--neutral-5))',
+          '6': 'hsl(var(--neutral-6))',
+          '7': 'hsl(var(--neutral-7))',
+          '8': 'hsl(var(--neutral-8))',
+          '9': 'hsl(var(--neutral-9))',
+          '10': 'hsl(var(--neutral-10))',
+          '11': 'hsl(var(--neutral-11))',
+          '12': 'hsl(var(--neutral-12))'
         },
         invert: {
           '1': 'hsl(var(--invert-1))',
@@ -188,14 +188,6 @@ const config: Config = {
           '3': 'hsl(var(--chart-3))',
           '4': 'hsl(var(--chart-4))',
           '5': 'hsl(var(--chart-5))',
-        },
-        segment: {
-          DEFAULT: 'hsl(var(--segment))',
-          fg: 'hsl(var(--segment-fg))',
-          active: {
-            DEFAULT: 'hsl(var(--segment-active))',
-            fg: 'hsl(var(--segment-active-fg))',
-          },
         },
         sidebar: {
           DEFAULT: 'hsl(var(--sidebar-bg))',
