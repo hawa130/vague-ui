@@ -43,7 +43,7 @@ export const TooltipPreview = () => {
         <TooltipProvider delayDuration={0}>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button>Hover on me</Button>
+              <Button variant="outline">Hover on me</Button>
             </TooltipTrigger>
             <TooltipContent {...contentProps}>This is a tooltip</TooltipContent>
           </Tooltip>

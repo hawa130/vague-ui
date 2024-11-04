@@ -11,6 +11,7 @@ export const GrayToggle = ({ value = false, onChange }: { value?: boolean; onCha
         <TooltipTrigger asChild>
           <Button
             className="group"
+            variant="outline"
             data-gray={value ? '' : undefined}
             onClick={() => onChange?.(!value)}
             size="icon-md"
