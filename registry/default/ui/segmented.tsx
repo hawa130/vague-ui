@@ -38,7 +38,7 @@ export const SegmentedItem = React.forwardRef<
     <RadioGroupPrimitive.Item
       ref={ref}
       className={cn(
-        'relative inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-all before:absolute before:-left-[0.5px] before:h-5 before:border-neutral-5 before:transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring-focus focus-visible:ring-offset-0 disabled:pointer-events-none disabled:opacity-50 data-[state=checked]:z-[1] data-[state=checked]:bg-white data-[state=checked]:dark:bg-neutral-6 data-[state=checked]:text-neutral-12 data-[state=checked]:shadow hover:data-[state=unchecked]:bg-accent hover:data-[state=unchecked]:text-accent-fg active:data-[state=unchecked]:bg-accent-dark before:[&+input+button]:data-[state=checked]:border-l-transparent [&:not(:first-child)]:before:data-[state=unchecked]:border-l',
+        'relative inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-all before:absolute before:-left-[0.5px] before:h-5 before:border-neutral-5 before:transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring-focus focus-visible:ring-offset-0 disabled:pointer-events-none disabled:opacity-50 data-[state=checked]:z-[1] data-[state=checked]:bg-white data-[state=checked]:dark:bg-neutral-6 data-[state=checked]:text-neutral-12 data-[state=checked]:shadow hover:data-[state=unchecked]:bg-accent hover:data-[state=unchecked]:text-accent-fg active:data-[state=unchecked]:bg-accent-dark before:[&+input+button]:data-[state=checked]:border-l-transparent [&:not(:first-child)]:before:data-[state=unchecked]:border-l',
         className,
       )}
       {...props}
