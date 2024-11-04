@@ -35,7 +35,7 @@ const badgeVariants = cva(
       {
         variant: 'filled',
         color: 'default',
-        className: 'bg-invert-1 text-fg-invert',
+        className: 'bg-invert-1 text-invert-fg',
       },
       {
         variant: 'soft',
@@ -55,7 +55,7 @@ const badgeVariants = cva(
       {
         variant: 'filled',
         color: 'primary',
-        className: 'bg-primary-9 text-fg-invert',
+        className: 'bg-primary-9 text-white',
       },
       {
         variant: 'surface',
@@ -75,7 +75,7 @@ const badgeVariants = cva(
       {
         variant: 'filled',
         color: 'destructive',
-        className: 'bg-destructive-9 text-fg-invert',
+        className: 'bg-destructive-9 text-white',
       },
       {
         variant: 'surface',
@@ -95,7 +95,7 @@ const badgeVariants = cva(
       {
         variant: 'filled',
         color: 'warning',
-        className: 'bg-warning-9 text-fg-invert',
+        className: 'bg-warning-9 text-white',
       },
       {
         variant: 'surface',
@@ -115,7 +115,7 @@ const badgeVariants = cva(
       {
         variant: 'filled',
         color: 'success',
-        className: 'bg-success-9 text-fg-invert',
+        className: 'bg-success-9 text-white',
       },
       {
         variant: 'surface',
@@ -135,7 +135,7 @@ const badgeVariants = cva(
       {
         variant: 'filled',
         color: 'info',
-        className: 'bg-info-9 text-fg-invert',
+        className: 'bg-info-9 text-white',
       },
       {
         variant: 'surface',

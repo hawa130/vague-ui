@@ -39,7 +39,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
             'group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg',
           description: 'group-[.toast]:text-muted-fg',
           actionButton:
-            'group-[.toast]:data-[button]:bg-invert-1 group-[.toast]:data-[button]:text-fg-invert group-[.toast]:data-[button]:font-medium hover:group-[.toast]:data-[button]:bg-invert-2 active:group-[.toast]:data-[button]:bg-invert-3',
+            'group-[.toast]:data-[button]:bg-invert-1 group-[.toast]:data-[button]:text-invert-fg group-[.toast]:data-[button]:font-medium hover:group-[.toast]:data-[button]:bg-invert-2 active:group-[.toast]:data-[button]:bg-invert-3',
           cancelButton:
             'group-[.toast]:data-[button]:bg-secondary group-[.toast]:data-[button]:text-secondary-fg group-[.toast]:data-[button]:font-medium hover:group-[.toast]:data-[button]:bg-accent hover:group-[.toast]:data-[button]:text-accent-fg active:group-[.toast]:data-[button]:bg-accent-dark',
           error: 'group-[.toaster]:shadow-destructive-4/40',

@@ -53,8 +53,7 @@ function Calendar({ className, classNames, language, showOutsideDays = true, ...
           'h-8 w-8 p-0 font-normal aria-selected:opacity-100',
         ),
         day_range_end: 'day-range-end',
-        day_selected:
-          'bg-primary-9 text-fg-invert hover:bg-primary-9 hover:text-fg-invert focus:bg-primary-9 focus:text-fg-invert',
+        day_selected: 'bg-primary-9 text-white hover:bg-primary-9 hover:text-white focus:bg-primary-9 focus:text-white',
         day_today: '[&:not([aria-selected])]:bg-accent [&:not([aria-selected])]:text-accent-fg',
         day_outside:
           'day-outside text-muted-fg opacity-50 aria-selected:bg-accent-light/50 aria-selected:text-muted-fg aria-selected:opacity-30',

@@ -169,6 +169,12 @@ const config: Config = {
           '1': 'hsl(var(--invert-1))',
           '2': 'hsl(var(--invert-2))',
           '3': 'hsl(var(--invert-3))',
+          fg: 'hsl(var(--invert-fg))',
+        },
+        light: {
+          '1': 'hsl(var(--light-1))',
+          '2': 'hsl(var(--light-2))',
+          '3': 'hsl(var(--light-3))',
         },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',

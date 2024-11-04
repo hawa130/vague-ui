@@ -46,7 +46,7 @@ const buttonVariants = cva(
       {
         variant: 'filled',
         color: 'default',
-        className: 'bg-invert-1 text-fg-invert hover:bg-invert-2 active:bg-invert-3',
+        className: 'bg-invert-1 text-invert-fg hover:bg-invert-2 active:bg-invert-3',
       },
       {
         variant: ['light', 'soft'],
@@ -73,7 +73,7 @@ const buttonVariants = cva(
       {
         variant: 'filled',
         color: 'primary',
-        className: 'bg-primary-9 text-fg-invert hover:bg-primary-10 active:bg-primary-11',
+        className: 'bg-primary-9 text-white hover:bg-primary-10 active:bg-primary-11',
       },
       {
         variant: ['outline', 'dashed'],
@@ -104,7 +104,7 @@ const buttonVariants = cva(
       {
         variant: 'filled',
         color: 'destructive',
-        className: 'bg-destructive-9 text-fg-invert hover:bg-destructive-10 active:bg-destructive-11',
+        className: 'bg-destructive-9 text-white hover:bg-destructive-10 active:bg-destructive-11',
       },
       {
         variant: ['outline', 'dashed'],
@@ -137,7 +137,7 @@ const buttonVariants = cva(
       {
         variant: 'filled',
         color: 'warning',
-        className: 'bg-warning-9 text-fg-invert hover:bg-warning-10 active:bg-warning-11',
+        className: 'bg-warning-9 text-white hover:bg-warning-10 active:bg-warning-11',
       },
       {
         variant: ['outline', 'dashed'],
@@ -168,7 +168,7 @@ const buttonVariants = cva(
       {
         variant: 'filled',
         color: 'success',
-        className: 'bg-success-9 text-fg-invert hover:bg-success-10 active:bg-success-11',
+        className: 'bg-success-9 text-white hover:bg-success-10 active:bg-success-11',
       },
       {
         variant: ['outline', 'dashed'],
@@ -199,7 +199,7 @@ const buttonVariants = cva(
       {
         variant: 'filled',
         color: 'info',
-        className: 'bg-info-9 text-fg-invert hover:bg-info-10 active:bg-info-11',
+        className: 'bg-info-9 text-white hover:bg-info-10 active:bg-info-11',
       },
       {
         variant: ['outline', 'dashed'],

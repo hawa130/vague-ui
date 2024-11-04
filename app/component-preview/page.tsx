@@ -26,7 +26,7 @@ export default function Page() {
   return (
     <main className={cn('mx-auto max-w-5xl px-5 py-8', isGray && 'grayscale')}>
       <div className="mb-4 flex justify-between">
-        <h1 className="text-2xl font-semibold leading-none tracking-tight">Component Preview</h1>
+        <h1 className="text-2xl font-semibold leading-none">Component Preview</h1>
         <div className="flex items-center gap-2">
           <GrayToggle value={isGray} onChange={setIsGray} />
           <ModeToggle />
