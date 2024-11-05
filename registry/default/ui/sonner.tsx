@@ -4,6 +4,8 @@ import type { ComponentProps, CSSProperties } from 'react'
 import { useTheme } from 'next-themes'
 import { Toaster as Sonner } from 'sonner'
 
+import { cn } from '@/lib/utils'
+
 type ToasterProps = ComponentProps<typeof Sonner>
 
 const Toaster = ({ ...props }: ToasterProps) => {
@@ -13,6 +15,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
     <Sonner
       richColors
       closeButton
+      cn={cn}
       visibleToasts={3}
       theme={theme as ToasterProps['theme']}
       className="toaster group"
