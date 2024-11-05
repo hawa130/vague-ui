@@ -5,7 +5,7 @@ import { AlertCircle, AlertTriangle, CircleCheck, Info } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const alertVariants = cva(
-  'relative w-full py-3 px-4 [&>i~*]:pl-6 [&>i+div]:py-0.5 [&>i+h5+div]:mt-0.5 [&>i]:absolute [&>i]:left-4 [&>i]:top-4 [&>i]:text-foreground',
+  'relative w-full py-3 px-4 [&>i+div]:py-0.5 [&>i+h5+div]:mt-0.5 [&>i]:absolute [&>i]:left-4 [&>i]:top-4 [&>i]:text-foreground',
   {
     variants: {
       variant: {
@@ -20,6 +20,11 @@ const alertVariants = cva(
         warning: '',
         success: '',
         info: '',
+      },
+      size: {
+        sm: 'text-sm [&>*]:text-sm [&>i>svg]:size-4 [&>i~*]:pl-6',
+        md: 'text-base [&>*]:text-base [&>i>svg]:size-5 [&>i~*]:pl-7',
+        lg: 'text-lg [&>*]:text-lg [&>i>svg]:size-6 [&>i~*]:pl-8',
       },
     },
     compoundVariants: [
@@ -112,6 +117,7 @@ const alertVariants = cva(
     defaultVariants: {
       variant: 'surface',
       color: 'default',
+      size: 'md',
     },
   },
 )
@@ -122,27 +128,27 @@ export type AlertProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'title' | 'c
     title?: React.ReactNode
   }
 
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>(({ title, color, icon, children, ...props }, ref) => {
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(({ title, color, icon, size, children, ...props }, ref) => {
   const resolvedIcon =
     icon ??
     ((color) => {
       switch (color) {
         case 'destructive':
-          return <AlertCircle className="h-4 w-4" />
+          return <AlertCircle />
         case 'warning':
-          return <AlertTriangle className="h-4 w-4" />
+          return <AlertTriangle />
         case 'success':
-          return <CircleCheck className="h-4 w-4" />
+          return <CircleCheck />
         case 'info':
-          return <Info className="h-4 w-4" />
+          return <Info />
         default:
           return null
       }
     })(color)
 
   return (
-    <AlertContainer ref={ref} color={color} {...props}>
-      {!(!title && !children) && resolvedIcon && <i className="h-4 w-4">{resolvedIcon}</i>}
+    <AlertContainer ref={ref} color={color} size={size} {...props}>
+      {!(!title && !children) && resolvedIcon && <i>{resolvedIcon}</i>}
       {!!title && <AlertTitle>{title}</AlertTitle>}
       {!!children && <AlertDescription>{children}</AlertDescription>}
     </AlertContainer>
@@ -153,8 +159,8 @@ Alert.displayName = 'Alert'
 const AlertContainer = React.forwardRef<
   HTMLDivElement,
   Omit<React.HTMLAttributes<HTMLDivElement>, 'color'> & VariantProps<typeof alertVariants>
->(({ className, variant, color, ...props }, ref) => (
-  <div ref={ref} role="alert" className={cn(alertVariants({ variant, color }), className)} {...props} />
+>(({ className, variant, color, size, ...props }, ref) => (
+  <div ref={ref} role="alert" className={cn(alertVariants({ variant, color, size }), className)} {...props} />
 ))
 AlertContainer.displayName = 'AlertContainer'
 
