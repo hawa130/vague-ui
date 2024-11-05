@@ -1,18 +1,28 @@
+import { createPreset } from 'fumadocs-ui/tailwind-plugin'
 import type { Config } from 'tailwindcss'
 import tailwindAnimate from 'tailwindcss-animate'
 import tailwindcssRadixColors from 'tailwindcss-radix-colors'
+import defaultTheme from 'tailwindcss/defaultTheme'
+
 import tailwindcssJoin from './lib/tailwindcss-join'
 
 const config: Config = {
   darkMode: ['class'],
+  presets: [createPreset({ preset: 'default' })],
   content: [
+    './node_modules/fumadocs-ui/dist/**/*.js',
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './registry/**/*.{js,ts,jsx,tsx,mdx}',
+    './docs/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
+        mono: ['var(--font-mono)', ...defaultTheme.fontFamily.mono],
+      },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
@@ -61,7 +71,7 @@ const config: Config = {
           '3-legacy': 'hsl(var(--primary-3-legacy))',
           '5-legacy': 'hsl(var(--primary-5-legacy))',
           '6-legacy': 'hsl(var(--primary-6-legacy))',
-          fg: 'hsl(var(--primary-fg))'
+          fg: 'hsl(var(--primary-fg))',
         },
         destructive: {
           '1': 'hsl(var(--destructive-1))',
@@ -83,7 +93,7 @@ const config: Config = {
           '3-legacy': 'hsl(var(--destructive-3-legacy))',
           '5-legacy': 'hsl(var(--destructive-5-legacy))',
           '6-legacy': 'hsl(var(--destructive-6-legacy))',
-          fg: 'hsl(var(--destructive-fg))'
+          fg: 'hsl(var(--destructive-fg))',
         },
         warning: {
           '1': 'hsl(var(--warning-1))',
@@ -105,7 +115,7 @@ const config: Config = {
           '3-legacy': 'hsl(var(--warning-3-legacy))',
           '5-legacy': 'hsl(var(--warning-5-legacy))',
           '6-legacy': 'hsl(var(--warning-6-legacy))',
-          fg: 'hsl(var(--warning-fg))'
+          fg: 'hsl(var(--warning-fg))',
         },
         success: {
           '1': 'hsl(var(--success-1))',
@@ -127,7 +137,7 @@ const config: Config = {
           '3-legacy': 'hsl(var(--success-3-legacy))',
           '5-legacy': 'hsl(var(--success-5-legacy))',
           '6-legacy': 'hsl(var(--success-6-legacy))',
-          fg: 'hsl(var(--success-fg))'
+          fg: 'hsl(var(--success-fg))',
         },
         info: {
           '1': 'hsl(var(--info-1))',
@@ -149,7 +159,7 @@ const config: Config = {
           '3-legacy': 'hsl(var(--info-3-legacy))',
           '5-legacy': 'hsl(var(--info-5-legacy))',
           '6-legacy': 'hsl(var(--info-6-legacy))',
-          fg: 'hsl(var(--info-fg))'
+          fg: 'hsl(var(--info-fg))',
         },
         neutral: {
           '1': 'hsl(var(--neutral-1))',
@@ -163,7 +173,7 @@ const config: Config = {
           '9': 'hsl(var(--neutral-9))',
           '10': 'hsl(var(--neutral-10))',
           '11': 'hsl(var(--neutral-11))',
-          '12': 'hsl(var(--neutral-12))'
+          '12': 'hsl(var(--neutral-12))',
         },
         invert: {
           '1': 'hsl(var(--invert-1))',
@@ -213,6 +223,9 @@ const config: Config = {
         xs: 'calc(var(--radius) - 6px)',
         'xs-1': 'calc(var(--radius) - 7px)',
       },
+      transitionDuration: {
+        DEFAULT: '100ms'
+      },
       keyframes: {
         'accordion-down': {
           from: { height: '0' },
@@ -260,10 +273,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [
-    tailwindAnimate,
-    tailwindcssRadixColors,
-    tailwindcssJoin,
-  ],
+  plugins: [tailwindAnimate, tailwindcssRadixColors, tailwindcssJoin],
 }
 export default config

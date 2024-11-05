@@ -242,6 +242,13 @@ async function buildStylesIndex() {
       registryDependencies: ['utils', 'tailwindcss-join'],
       tailwind: {
         config: {
+          theme: {
+            extend: {
+              transitionDuration: {
+                DEFAULT: '100ms',
+              },
+            },
+          },
           plugins: [
             `require('tailwindcss-animate')`,
             `require('tailwindcss-radix-colors')`,

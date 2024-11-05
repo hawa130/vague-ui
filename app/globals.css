@@ -28,7 +28,7 @@
     --body: 0 0% 98.8%;
     --button: 0 0% 100%;
     --border: 0 0% 87.8%;
-    --input: 0 0% 87.8%;
+    --input: 0 0% 85.1%;
 
     --ring-accent: 0 0% 73.3%;
     --ring-focus: 225.9 75.4% 74.5%;
@@ -154,7 +154,7 @@
     --body: 0 0% 6.7%;
     --button: 0 0% 9.8%;
     --border: 0 0% 19.2%;
-    --input: 0 0% 19.2%;
+    --input: 0 0% 22.7%;
 
     --ring-accent: 0 0% 37.6%;
     --ring-focus: 225.8 45.1% 47.8%;
@@ -260,7 +260,7 @@
   }
 
   :focus-visible {
-    @apply outline-ring-accent/60 outline-offset-0 outline-2;
+    @apply outline-ring-focus outline-offset-0 outline-2;
   }
 
   body {
